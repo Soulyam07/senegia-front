@@ -1,0 +1,214 @@
+<div class="header-bg text-white"
+     style="background: url('../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
+  <div class="mx-auto  d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center gap-3">
+      <img src="../../../assets/img/user.jpg" alt="User Photo" class="profile-pic">
+      <div>
+        <h4 class="mb-0">Abdou Diambar</h4>
+        <div><i class="bi bi-envelope-fill me-2"></i> abcdf...fsdfsd.com</div>
+        <div><i class="bi bi-telephone-fill me-2"></i> +91 1234567890</div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-light fw-bold text-success">Profile Setting</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs (Overview, Courses, Jobs) -->
+<div class="mx-auto ms-5" style="margin-top:-30px">
+  <div class="d-flex gap-3 justify-content-start flex-wrap">
+    <button class="btn bg-white tab-button  text-dark fw-bold ">
+
+      <h4 style="font-size: 22px">Dashboard</h4>
+    </button>
+    <button class="btn bg-white tab-button active text-success fw-bold">
+      <h4 style="font-size: 22px">Courses</h4>
+    </button>
+    <button class="btn bg-white tab-button text-dark fw-bold">
+      <h4 style="font-size: 22px" >Jobs</h4>
+    </button>
+  </div>
+</div>
+
+<div class="mx-auto ms-5 me-3 mt-4 border-bottom">
+  <ul class="nav nav-tabs border-0">
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/organizer/dash-learner">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/organizer/my-course">Mes cours</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark"  routerLink="/organizer/my-webinar" >Webinaires</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active fw-bold" >Mes gains</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="">Mon abonnement</a>
+    </li>
+
+  </ul>
+</div>
+
+<div class="mx-auto ms-4 me-4 py-4 mt-4 mb-4">
+
+  <div class="container-fluid my-4">
+    <div class="row align-items-center">
+      <div class="col-md-6 d-flex align-items-center">
+        <div>
+          <h2 class="mb-0">Resume des revenus</h2>
+
+        </div>
+      </div>
+      <div class="col-md-6 d-flex justify-content-end align-items-center">
+        <div class="me-3 d-flex align-items-center">
+
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Tous type
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Tous type</a></li>
+              <li><a class="dropdown-item" href="#">Tous type</a></li>
+
+            </ul>
+          </div>
+          <div class="dropdown ms-3">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              Cette Annee
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#">Ce mois</a></li>
+              <li><a class="dropdown-item" href="#">Cette semaine</a></li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+<div class="mx-auto  py-5">
+  <div class="row g-4">
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <div class="stat-card">
+        <div class="stat-icon icon-blue text-white">
+          <img src="../../../assets/img/icons/job_posted.png" alt="Job Posted" style="width: 60px; height: auto;">
+        </div>
+        <div class="stat-text">
+          <div class="stat-value">4444 XOF</div>
+          <div class="label">Chiffre d'affaires total du deuxième trimestre</div>
+          <div class="monthly">Ce mois-ci 333 XOF</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <div class="stat-card">
+        <div class="stat-icon icon-orange text-white">
+          <i class="bi bi-box fs-3"></i>
+        </div>
+        <div class="stat-text">
+          <div class="stat-value">111</div>
+          <div class="label">Chiffre d'affaires total du deuxième trimestre</div>
+          <div class="monthly">Ce mois-ci 333 XOF</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <div class="stat-card">
+        <div class="stat-icon icon-green text-white">
+          <i class="bi bi-receipt fs-3"></i>
+        </div>
+        <div class="stat-text">
+          <div class="stat-value">88 XOF</div>
+          <div class="label">Valeur moyenne des commandes</div>
+          <div class="monthly">Ce mois-ci 333 XOF</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="mx-auto mt-5">
+ <div class="card">
+   <div class="card-body">
+     <h3 class="mb-4">Cours les plus vendus</h3>
+     <hr>
+     <div class="card mb-4">
+       <div class="card-body p-0">
+         <div class="table-responsive">
+           <table class="table table-hover mb-0">
+             <thead>
+             <tr>
+               <th scope="col">#</th>
+               <th scope="col">Cours</th>
+               <th scope="col">Ventes</th>
+               <th scope="col">Montant</th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr>
+               <th scope="row">1</th>
+               <td>
+                 <div class="d-flex align-items-center">
+                   <img src="/assets/img/dummy.png" alt="Conception réactive du site Web">
+                   <span>conception réactive du site Web</span>
+                 </div>
+               </td>
+               <td>66</td>
+               <td>199 XOF</td>
+             </tr>
+             <tr>
+               <th scope="row">2</th>
+               <td>
+                 <div class="d-flex align-items-center">
+                   <img src="/assets/img/dummy.png" alt="Informations sur l'interface utilisateur/UX">
+                   <span>Informations sur l'interface utilisateur/UX</span>
+                 </div>
+               </td>
+               <td>55</td>
+               <td>333 XOF</td>
+             </tr>
+             <tr>
+               <th scope="row">3</th>
+               <td>
+                 <div class="d-flex align-items-center">
+                   <img src="/assets/img/dummy.png" alt="Apprendre les fondamentaux d'Angular">
+                   <span>Apprendre les fondamentaux d'Angular</span>
+                 </div>
+               </td>
+               <td>44</td>
+               <td>111 XOF</td>
+             </tr>
+             <tr>
+               <th scope="row">4</th>
+               <td>
+                 <div class="d-flex align-items-center">
+                   <img src="/assets/img/dummy.png" alt="Croquis de A à Z, 2024">
+                   <span>Croquis de A à Z, 2024</span>
+                 </div>
+               </td>
+               <td>33</td>
+               <td>222 XOF</td>
+             </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+
+</div>

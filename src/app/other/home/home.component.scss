@@ -1,0 +1,468 @@
+// Variables SCSS (Optionnel mais recommandé pour les couleurs)
+$primary-green: #28a745;
+$light-green-bg: #e9f8f4;
+$hero-text-color: #333;
+$hero-paragraph-color: #555;
+$card-shadow: rgba(0, 0, 0, 0.08);
+$card-text-color: #666;
+
+// Couleurs spécifiques pour les boutons et icônes
+$yellow-btn-color: #ffc107;
+$teal-btn-color: #20c997;
+$orange-btn-color: #fd7e14;
+$green-btn-color: #28a745;
+
+
+
+// Utilisation de la variable SCSS pour la couleur du texte
+.text-primary-green {
+  color: $primary-green;
+}
+
+/* Hero Section */
+.hero-section {
+  //background-image: url("assets/img/banner-bg.ec50ef071e1c0bda.png");
+  //position: relative;
+  //padding: 60px 0;
+  //overflow: hidden;
+  //border-bottom-left-radius: 50px;
+  //border-bottom-right-radius: 50px;
+  //margin-bottom: 40px;
+  height: 500px;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 10;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: $hero-text-color;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: $hero-paragraph-color;
+    margin-bottom: 30px;
+  }
+}
+
+.hero-button {
+  background-color: $primary-green;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-green, 10%); // Utilise la fonction darken de Sass
+    color: white;
+  }
+
+  i {
+    margin-left: 10px;
+  }
+}
+
+.hero-image {
+  position: relative;
+  z-index: 10;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+/* Background shapes for hero section */
+.hero-bg-shapes {
+  .shape-1 {
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    width: 80px;
+    height: 80px;
+
+    background-size: contain;
+    opacity: 0.5;
+  }
+
+  .shape-2 {
+    position: absolute;
+    top: 50px;
+    right: 200px;
+    width: 70px;
+    height: 70px;
+    background: url('https://via.placeholder.com/70/transparent/d2f7e9?text=💼') no-repeat center center;
+    background-size: contain;
+    opacity: 0.5;
+  }
+
+  .shape-3 {
+    position: absolute;
+    bottom: -50px;
+    left: 30%;
+    width: 150px;
+    height: 150px;
+    background: url('https://via.placeholder.com/150/transparent/d2f7e9?text=📝') no-repeat center center;
+    background-size: contain;
+    opacity: 0.5;
+  }
+}
+
+/* Card Section */
+.card-section {
+  padding: 40px 0;
+}
+
+.info-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px $card-shadow;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .card-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    background-size: cover;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $hero-text-color;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: $card-text-color;
+    margin-bottom: 25px;
+    flex-grow: 1;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      margin-left: 8px;
+    }
+  }
+}
+
+/* Specific card styles based on image */
+.card-yellow-btn {
+  .card-icon {
+    background-color: $yellow-btn-color;
+    background-image: url('https://via.placeholder.com/80/ffc107/FFFFFF?text=🏃‍♂️');
+  }
+  .btn {
+    background-color: $yellow-btn-color;
+    border-color: $yellow-btn-color;
+    color: #333; // Dark text for light button
+    &:hover {
+      background-color: darken($yellow-btn-color, 10%);
+      border-color: darken($yellow-btn-color, 10%);
+    }
+  }
+}
+
+.card-teal-btn {
+  .card-icon {
+    background-color: $teal-btn-color;
+    background-image: url('https://via.placeholder.com/80/20c997/FFFFFF?text=💼');
+  }
+  .btn {
+    background-color: $teal-btn-color;
+    border-color: $teal-btn-color;
+    color: white;
+    &:hover {
+      background-color: darken($teal-btn-color, 10%);
+      border-color: darken($teal-btn-color, 10%);
+    }
+  }
+}
+
+.card-orange-btn {
+  .card-icon {
+    background-color: $orange-btn-color;
+    background-image: url('https://via.placeholder.com/80/fd7e14/FFFFFF?text=👨‍🏫');
+  }
+  .btn {
+    background-color: $orange-btn-color;
+    border-color: $orange-btn-color;
+    color: white;
+    &:hover {
+      background-color: darken($orange-btn-color, 10%);
+      border-color: darken($orange-btn-color, 10%);
+    }
+  }
+}
+
+.card-green-btn {
+  .card-icon {
+    background-color: $green-btn-color;
+    background-image: url('https://via.placeholder.com/80/28a745/FFFFFF?text=🏢');
+  }
+  .btn {
+    background-color: $green-btn-color;
+    border-color: $green-btn-color;
+    color: white;
+    &:hover {
+      background-color: darken($green-btn-color, 10%);
+      border-color: darken($green-btn-color, 10%);
+    }
+  }
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding: 40px 0;
+    text-align: center;
+  }
+  .hero-image {
+    margin-top: 30px;
+  }
+  .hero-bg-shapes {
+    display: none; // Hide background shapes on small screens
+  }
+}
+
+
+.carousel-item {
+  padding: 20px 0;
+}
+
+.card {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100%;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@media (max-width: 767.98px) {
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.info-box {
+  background-color: #eef6ff;
+  border-radius: 0 2rem 2rem 0;
+  padding: 6rem;
+}
+.tagline span {
+  color: #f4aa1a;
+}
+.course-card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.carousel-inner {
+  padding: 1rem 0;
+}
+
+.custom-carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.custom-btn {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+  background-color: #f4aa1a;
+  color: white;
+  border-color: #f4aa1a;
+}
+
+
+.job-section {
+  background-color: #fff7e6;
+  padding: 4rem 1rem;
+
+}
+
+.job-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: #fff;
+  height: 100%;
+}
+
+.badge-emploi {
+  background-color: #ffe0a3;
+  color: #9a6700;
+  font-size: 0.75rem;
+}
+
+.btn-green-outline {
+  border: 1px solid #28a745;
+  color: #28a745;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.btn-green-outline:hover {
+  background-color: #28a745;
+  color: white;
+}
+
+.carousel-control-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #007f4f;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-control-prev-custom {
+  left: -20px;
+}
+
+.carousel-control-next-custom {
+  right: -20px;
+}
+
+@media (max-width: 768px) {
+  .carousel-control-custom {
+    display: none;
+  }
+}
+
+.educator-section-custom {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.educator-content-card-custom {
+  background-color: #F5F9FF;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 150px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Image Positioning - REQUIRES CUSTOM CSS FOR OVERLAP EFFECT */
+.educator-image-container-custom {
+  position: relative;
+  min-height: 400px; /* Needs height for absolute children */
+  margin-bottom: 50px; /* Space for image extending below */
+}
+.educator-image-custom {
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+
+}
+.educator-image-custom.img-1 { width: 250px; height: 400px; top: 70%;left: 30%;  transform: translateY(-50%); z-index: 3; }
+.educator-image-custom.img-2 { width: 200px; height: 250px; top: 10%; left: 80%; z-index: 4; }
+.educator-image-custom.img-3 { width: 200px; height: 250px; top: 75%; left: 80%;; z-index: 3; }
+
+/* Small background shape */
+.background-diamond-custom {
+  position: absolute;
+  top: 5%;
+  right: 15%;
+  width: 80px;
+  height: 80px;
+  background: url('https://via.placeholder.com/80/transparent/ffc107?text=🔺') no-repeat center center;
+  background-size: contain;
+  opacity: 0.3;
+  transform: rotate(30deg);
+  z-index: 1;
+}
+
+/* Responsive Adjustments (minimal) */
+@media (max-width: 991.98px) { /* Adjust for medium screens and below */
+  .educator-image-container-custom {
+    min-height: auto;
+    margin-bottom: 0;
+    /* Remove extra margin on small screens */
+
+  }
+  .educator-image-custom {
+    position: static; /* Stack images normally */
+    width: 80%; /* Make them take more width */
+    max-width: 300px; /* Limit max width */
+    display: block;
+    margin: 20px auto; /* Center them */
+    transform: none; /* Remove transforms */
+    z-index: auto;
+  }
+  .background-diamond-custom {
+    display: none;
+  }
+}

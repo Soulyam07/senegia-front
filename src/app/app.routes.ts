@@ -13,6 +13,13 @@ import {RegisterLearnerComponent} from './organizer/learner/register-learner/reg
 import {RegisterStudentComponent} from './student/register-student/register-student.component';
 import {RegisterJobComponent} from './organizer/jobseeker/register-job/register-job.component';
 import {HomeComponent} from './other/home/home.component';
+import { DashComponentStudent } from './student/dash/dash.component';
+import { ChekoutComponent } from './student/chekout/chekout.component';
+import { AllcoursComponent } from './student/allcours/allcours.component';
+import { SubcripComponent } from './student/subcrip/subcrip.component';
+import { CoursComponent } from './student/cours/cours.component';
+import { PurchaseComponent } from './student/purchase/purchase.component';
+import { SavedcoursComponent } from './student/savedcours/savedcours.component';
 
 export const routes: Routes = [
   { path: '',component:HomeComponent},
@@ -27,5 +34,22 @@ export const routes: Routes = [
   { path: 'organizer/dash-learner',component:DashLearnerComponent},
   { path: 'organizer/my-course',component:MyCourseComponent},
   { path: 'organizer/my-webinar',component:MyWebinarComponent},
-  { path: 'organizer/my-earning',component:MyEarningComponent}
+  { path: 'organizer/my-earning',component:MyEarningComponent},
+  { path: 'student/dash',component:DashComponentStudent},
+  { path: 'student/purchase',component:PurchaseComponent },
+  { path: 'student/courchek',component:ChekoutComponent},
+  { path: 'student/session',component:ChekoutComponent},
+  { path: 'student/profil',component:ChekoutComponent},
+  { path: 'student/allcours',component:AllcoursComponent},
+  { path: 'student/cours',component:CoursComponent},
+  { path: 'student/saved',component:SavedcoursComponent},
+  { path: 'student/subcrip',component:SubcripComponent},
+
+
+
+
+
+  
+
+
 ];

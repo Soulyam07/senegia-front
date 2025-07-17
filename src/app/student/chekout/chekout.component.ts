@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-chekout',
-  imports: [ RouterLink],
+  imports: [ ],
   templateUrl: './chekout.component.html',
   styleUrl: './chekout.component.scss'
 })

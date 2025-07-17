@@ -3,7 +3,8 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-subcrip',
-  imports: [RouterLink],
+  imports: [
+  ],
   templateUrl: './subcrip.component.html',
   styleUrl: './subcrip.component.scss'
 })

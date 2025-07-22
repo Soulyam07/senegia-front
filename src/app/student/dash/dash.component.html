@@ -1,44 +1,10 @@
 
-<div class="header-bg text-white"
-     style="background: url('../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
-  <div class="mx-auto ms-5 d-flex justify-content-between align-items-center flex-wrap">
-    <div class="d-flex align-items-center gap-3">
-      <img src="" alt="User Photo" class="profile-pic">
-      <div>
-        <h4 class="mb-0">Shubham Khantwal</h4>
-        <div><i class="bi bi-envelope-fill me-2"></i> abcdf...fsdfsd.com</div>
-        <div><i class="bi bi-telephone-fill me-2"></i> +91 1234567890</div>
-      </div>
-    </div>
-    <div>
-      <button class="btn btn-light fw-bold text-success">Profile Setting</button>
-    </div>
-  </div>
-</div>
-
-<!-- Tabs (Overview, Courses, Jobs) -->
-
-
-<!-- Sub navigation: Dashboard | Manage Jobs -->
-<div class="mx-auto ms-5 mt-4 border-bottom">
-  <ul class="nav nav-tabs border-0">
-    <li class="nav-item">
-      <a class="nav-link active fw-bold" href="#" style="">Dashboard</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">My courses </a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Live Session & Séminaire</a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Save Course</a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Purchased History</a>
-    </li>
-  </ul>
-</div>
+<app-menustudent
+  [userName]="'Mamadou Barro'"
+  [userEmail]="'barro@example.com'"
+  [userPhone]="'77 123 45 67'"
+  [userPhoto]="'assets/img/photo.jpg'">
+</app-menustudent>
 
 <div class="mx-auto ms-3 me-3">
 
@@ -141,6 +107,31 @@
       </div>
     </div>
 
+  <!-- Card 2 -->
+    <div class="col">
+      <div class="card h-100 shadow-sm rounded-3">
+        <img src="assets/img/demo2.png" class="card-img-top" alt="UI/UX Course">
+        <div class="card-body">
+          <div class="d-flex justify-content-start gap-3 mb-2 text-muted small">
+            <span><i class="bi bi-clock"></i> 5h 49m</span>
+            <span><i class="bi bi-collection-play"></i> 24 lectures</span>
+            <span><i class="bi bi-people"></i> 30 Students</span>
+          </div>
+          <h5 class="card-title fw-semibold">Information About UI/UX</h5>
+          <p class="card-text text-muted small">
+            Learn to design websites with Figma, build with Webflow, and make a...
+          </p>
+          <div class="progress mb-2" style="height: 6px;">
+            <div class="progress-bar bg-success" style="width: 0%;"></div>
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted small">0% Completed</span>
+            <span class="text-warning fw-medium"><i class="bi bi-star-fill"></i> 4.8 Ratings</span>
+          </div>
+          <button class="btn btn-warning text-white w-100 rounded">Start Learning</button>
+        </div>
+      </div>
+    </div>
     <!-- Card 3 -->
     <div class="col">
       <div class="card h-100 shadow-sm rounded-3">
@@ -168,12 +159,52 @@
     </div>
   </div>
 </div>
-  <div class="mx-auto ms-4 me-4 mt-5">
+  <div class="container my-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="fw-bold">Sessions En Direct / Webinaires À Venir</h4>
     <button class="btn btn-outline-success">Tout Voir</button>
   </div>
   <div class="row">
+    <!-- Carte Webinaire 1 -->
+                    <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0">
+                                <img src="assets/img/demo3.png" class="card-img-top" alt="Sketch">
+                    <div class="card-body">
+                    <!-- En-tête avec titre et date/heure -->
+                    <div class="text-center mb-3">
+                        <h5 class="card-title fw-bold mb-1">Sketch from A to Z, 2024</h5>
+                        <div class="text-muted small">
+                        <i class="bi bi-calendar3 me-1"></i> 15-07-2024
+                        <i class="bi bi-clock ms-2 me-1"></i> 11:00 AM to 12:00 PM
+                        </div>
+                    </div>
+                    
+                    <!-- Description du cours -->
+                    <p class="card-text mb-3">
+                        Learn to design websites with Figma, build with Webflow, and make a...
+                    </p>
+                       <hr>
+                    <!-- Instructeur -->
+                   <div class="d-flex justify-content-between align-items-center mt-2">
+                     <div class=" d-flex w-50 align-items-center mb-3">
+                        <div class="flex-shrink-0">
+                        <img src="assets/img/demo2.png" alt="Instructor" class="rounded-circle" width="40" height="40">
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                        <div class="fw-semibold">Nicole Brown</div>
+                        <div class="text-muted small">Instructor</div>
+                        </div>
+                    </div> 
+                    <!-- Bouton principal -->
+                    <button class="btn border border-primary  w-30 fw-semibold">
+                        Join Now
+                    </button>
+                    </div>
+                   </div>
+                </div>
+    </div>
+
+
     <!-- Carte Webinaire 1 -->
                     <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm border-0">

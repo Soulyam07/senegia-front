@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import {HeaderComponent} from './other/header/header.component';
 import {FooterComponent} from './other/footer/footer.component';
 
@@ -8,7 +8,6 @@ import {FooterComponent} from './other/footer/footer.component';
   selector: 'app-root',
   imports: [
      RouterOutlet,
-      RouterOutlet,
        HeaderComponent,
       FooterComponent
   
@@ -18,4 +17,14 @@ import {FooterComponent} from './other/footer/footer.component';
 })
 export class AppComponent {
   title = 'senegia-front';
+    showMainLayout = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // ✅ Si l’URL commence par /student, on cache le header/footer
+        this.showMainLayout = !event.urlAfterRedirects.startsWith('/student');
+      }
+    });
+  }
 }

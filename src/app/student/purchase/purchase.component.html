@@ -1,44 +1,10 @@
-<div class="header-bg text-white"
-     style="background: url('../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
-  <div class="mx-auto ms-5 d-flex justify-content-between align-items-center flex-wrap">
-    <div class="d-flex align-items-center gap-3">
-      <img src="" alt="User Photo" class="profile-pic">
-      <div>
-        <h4 class="mb-0">Shubham Khantwal</h4>
-        <div><i class="bi bi-envelope-fill me-2"></i> abcdf...fsdfsd.com</div>
-        <div><i class="bi bi-telephone-fill me-2"></i> +91 1234567890</div>
-      </div>
-    </div>
-    <div>
-      <button class="btn btn-light fw-bold text-success">Profile Setting</button>
-    </div>
-  </div>
-</div>
 
-<!-- Tabs (Overview, Courses, Jobs) -->
-
-
-<!-- Sub navigation: Dashboard | Manage Jobs -->
-<div class="mx-auto ms-5 mt-4 border-bottom">
-  <ul class="nav nav-tabs border-0">
-    <li class="nav-item">
-      <a class="nav-link text-dark" href="#" style="">Dashboard</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">My courses </a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Live Session & Séminaire</a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Save Course</a>
-    </li>
-     <li class="nav-item">
-      <a class="nav-link active fw-bold" routerLink="">Purchased History</a>
-    </li>
-  </ul>
-</div>
-
+<app-menustudent
+  [userName]="'Mamadou Barro'"
+  [userEmail]="'barro@example.com'"
+  [userPhone]="'77 123 45 67'"
+  [userPhoto]="'assets/img/photo.jpg'">
+</app-menustudent>
 
 <div class="container py-5">
   <div class="d-flex justify-content-between align-items-center mb-3">

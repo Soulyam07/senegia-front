@@ -1,0 +1,34 @@
+ body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .nav-link.active {
+      background-color: #e6f4ec;
+      color: #1e7e34;
+    }
+    .card {
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+    .card h5 {
+      font-weight: bold;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .btn-outline-success {
+      width: 100%;
+    }
+    .nav-pills .nav-link {
+      border-radius: 50px;
+      margin: 0 5px;
+    }
+    .breadcrumb {
+      font-size: 0.9rem;
+    }
+    .text-green {
+      color: #28a745;
+    }
+    .bg-light-green {
+      background-color: #e6f4ec;
+    }

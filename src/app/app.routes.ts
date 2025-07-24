@@ -23,6 +23,8 @@ import { SavedcoursComponent } from './student/savedcours/savedcours.component';
 import { CoursdetailsComponent } from './student/coursdetails/coursdetails.component';
 import { SessionsComponent } from './student/sessions/sessions.component';
 import { StudentLayoutComponent } from './student/layouts/student-layout/student-layout.component';
+import { ResumeComponent } from './candidat/resume/resume.component';
+import { ProfilComponent } from './candidat/profil/profil.component';
 
 export const routes: Routes = [
   { path: '',component:HomeComponent},
@@ -38,6 +40,10 @@ export const routes: Routes = [
   { path: 'organizer/my-course',component:MyCourseComponent},
   { path: 'organizer/my-webinar',component:MyWebinarComponent},
   { path: 'organizer/my-earning',component:MyEarningComponent},
+  { path: 'candidat/resume',component:ResumeComponent},
+ { path: 'candidat/profil',component:ProfilComponent},
+
+
  {
    path: 'student',
   loadChildren: () =>

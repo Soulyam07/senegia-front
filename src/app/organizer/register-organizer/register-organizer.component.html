@@ -1,0 +1,133 @@
+<div class="mx-auto ms-4 me-4 py-5">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-4">Créer un nouveau compte</h3>
+      <p class="text-center mb-4">Inscrivez-vous dès maintenant et profitez d'avantages exclusifs. Commencez votre aventure avec nous dès aujourd'hui !</p>
+
+      <form>
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="userType" class="form-label">Type D'utilisateur</label>
+            <select class="form-select" id="userType">
+              <option selected>Choisir...</option>
+              <option value="1">Utilisateur 1</option>
+              <option value="2">Utilisateur 2</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label for="entityType" class="form-label">Type D'entité</label>
+            <input type="text" class="form-control" id="entityType" placeholder="Entrez le type d'entité" />
+          </div>
+          <div class="col-md-4">
+            <label for="phoneNumber" class="form-label">Numéro De Portable</label>
+            <input type="tel" class="form-control" id="phoneNumber" placeholder="Entrez le numéro de téléphone portable" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+
+
+          <div class="col-md-4">
+            <label for="companySize" class="form-label">Taille De L'entreprise</label>
+            <input type="text" class="form-control" id="companySize" placeholder="Entrez la taille de l'entreprise" />
+          </div>
+          <div class="col-md-4">
+            <label for="state" class="form-label">État</label>
+            <input type="text" class="form-control" id="state" placeholder="Entrez l'état" />
+          </div>
+          <div class="col-md-4">
+            <label for="postalCode" class="form-label">Code Postal</label>
+            <input type="text" class="form-control" id="postalCode" placeholder="Entrez le code postal" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+
+
+
+        </div>
+
+
+
+        <div class="row mb-3">
+
+          <div class="col-md-4">
+            <label for="companyName" class="form-label">Nom Légal De L'entreprise</label>
+            <input type="text" class="form-control" id="companyName" placeholder="Entrez le nom de l'entreprise" />
+          </div>
+
+          <div class="col-md-4">
+            <label for="website" class="form-label">Site Web (Facultatif)</label>
+            <input type="url" class="form-control" id="website" placeholder="Entrez le site Web" />
+          </div>
+
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="email" class="form-label">Identifiant E-Mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Entrez l'identifiant e-mail" />
+          </div>
+
+          <div class="col-md-4">
+            <label for="password" class="form-label">Mot De Passe</label>
+            <input type="password" class="form-control" id="password" placeholder="Entrez le mot de passe" />
+          </div>
+          <div class="col-md-4">
+            <label for="confirmPassword" class="form-label">Confirmez Le Mot De Passe</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmez le mot de passe" />
+          </div>
+        </div>
+
+       <div class="row mb-3" >
+         <div class="col-md-4">
+           <label for="city" class="form-label">Ville</label>
+           <input type="text" class="form-control" id="city" placeholder="Entrez la ville" />
+         </div>
+
+         <div class="col-md-4">
+           <label for="country" class="form-label">Pays</label>
+           <input type="text" class="form-control" id="country" placeholder="Entrez le pays" />
+         </div>
+
+         <div class="col-md-4">
+           <label for="address" class="form-label">Adresse</label>
+           <input type="text" class="form-control" id="address" placeholder="Entrez l'adresse" />
+         </div>
+       </div>
+
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <label for="orgDescription" class="form-label">Description De L'organisation</label>
+            <textarea class="form-control" id="orgDescription" rows="3" placeholder="Description des cours"></textarea>
+          </div>
+          <div class="col-md-6">
+            <label for="logoUpload" class="form-label">Télécharger L'image/Le Logo De L'organisation</label>
+            <input type="file" class="form-control" id="logoUpload" />
+          </div>
+        </div>
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="termsAndConditions" />
+          <label class="form-check-label" for="termsAndConditions">J'accepte les <a href="#" class="text-decoration-none">conditions générales</a> et la <a href="#" class="text-decoration-none">politique de confidentialité</a>.</label>
+        </div>
+
+        <div class="d-flex justify-content-end">
+          <button type="reset" class="btn btn-secondary me-3">Annuler</button>
+          <button type="submit" class="btn btn-continue">Continuer</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="container-fluid mt-5 mb-3">
+    <div class="text-center">
+      <h5>Vous avez deja un compte ?</h5>
+      <div class="d-grid gap-2 col-3 mx-auto">
+        <button type="button" class="btn btn-login">Se Connecter</button>
+      </div>
+
+    </div>
+  </div>
+</div>

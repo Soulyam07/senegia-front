@@ -1,0 +1,17 @@
+.header-bg {
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+.profile-pic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.active-tab {
+  border-bottom: 3px solid red; /* Trait rouge */
+  font-weight: bold;            /* Texte en gras */
+  color: #000 !important;       /* Couleur du texte forcée */
+}

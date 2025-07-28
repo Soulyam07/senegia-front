@@ -1,0 +1,64 @@
+
+<app-menustudent
+  [userName]="'Mamadou Barro'"
+  [userEmail]="'barro@example.com'"
+  [userPhone]="'77 123 45 67'"
+  [userPhoto]="'assets/img/photo.jpg'">
+</app-menustudent>
+
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="mb-0">Purchased History</h5>
+    <div>
+      <label for="sortSelect" class="form-label me-2 text-muted small">Sort By</label>
+      <select class="form-select form-select-sm w-auto d-inline-block" id="sortSelect">
+        <option selected>Courses</option>
+        <option value="date">Date</option>
+        <option value="price">Price</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table align-middle">
+      <thead>
+        <tr>
+          <th>S. No.</th>
+          <th>Order ID</th>
+          <th>Course Name</th>
+          <th>Date & Time</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Repeat this block as needed -->
+        <tr>
+          <td>1</td>
+          <td>#2686786</td>
+          <td>Website Responsive Design</td>
+          <td>30-07-2024, 12:41 PM</td>
+          <td>$19.99</td>
+          <td>
+            <button class="btn btn-sm btn-download">
+              <i class="bi bi-download"></i> Download Receipt
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>#2686786</td>
+          <td>Website Responsive Design</td>
+          <td>30-07-2024, 12:41 PM</td>
+          <td>$19.99</td>
+          <td>
+            <button class="btn btn-sm btn-download">
+              <i class="bi bi-download"></i> Download Receipt
+            </button>
+          </td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+</div>

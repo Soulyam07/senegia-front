@@ -1,0 +1,168 @@
+<app-menustudent
+  [userName]="'Mamadou Barro'"
+  [userEmail]="'barro@example.com'"
+  [userPhone]="'77 123 45 67'"
+  [userPhoto]="'assets/img/photo.jpg'">
+</app-menustudent>
+
+<div class="container py-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-4">
+    <h5 class="mb-3 mb-md-0">Saved Course</h5>
+    <div class="d-flex gap-3 align-items-center w-100 w-md-auto">
+      <input type="text" class="form-control" placeholder="Search course">
+      <select class="form-select w-auto">
+        <option selected>Sort By</option>
+        <option>Courses</option>
+        <option>Ratings</option>
+        <option>Price</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Grid of Courses -->
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+
+    <!-- Single Course Card (repeat this block) -->
+    <div class="col">
+      <div class="course-card position-relative">
+        <img src="assets/img/banner3.png" alt="Course image">
+        <span class="save-badge"><i class="bi bi-bookmark-fill"></i></span>
+        <div class="course-body">
+          <div class="d-flex flex-wrap gap-3 mb-2 course-meta">
+            <span><i class="bi bi-clock-fill me-1 text-success"></i>5h 49m</span>
+            <span><i class="bi bi-collection-fill me-1 text-success"></i>24 lectures</span>
+            <span><i class="bi bi-people-fill me-1 text-success"></i>30 Students</span>
+          </div>
+          <h6 class="fw-bold mb-1">Website Responsive Design</h6>
+          <p class="text-muted small mb-2">Learn to design websites with Figma, build with Webflow, and make a...</p>
+          <div class="d-flex align-items-center justify-content-between mb-2 course-footer">
+            <div class="d-flex align-items-center gap-2">
+              <img src="" class="rounded-circle" alt="Instructor">
+              <span class="course-instructor text-muted">Nicole Brown</span>
+            </div>
+            <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8 Ratings</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price-tag text-success">$19.55</span>
+            <button class="btn btn-outline-success btn-sm buy-btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duplique ce bloc "col" pour ajouter plus de cartes -->
+      <!-- Single Course Card (repeat this block) -->
+    <div class="col">
+      <div class="course-card position-relative">
+        <img src="assets/img/demo2.png" alt="Course image">
+        <span class="save-badge"><i class="bi bi-bookmark-fill"></i></span>
+        <div class="course-body">
+          <div class="d-flex flex-wrap gap-3 mb-2 course-meta">
+            <span><i class="bi bi-clock-fill me-1 text-success"></i>5h 49m</span>
+            <span><i class="bi bi-collection-fill me-1 text-success"></i>24 lectures</span>
+            <span><i class="bi bi-people-fill me-1 text-success"></i>30 Students</span>
+          </div>
+          <h6 class="fw-bold mb-1">Website Responsive Design</h6>
+          <p class="text-muted small mb-2">Learn to design websites with Figma, build with Webflow, and make a...</p>
+          <div class="d-flex align-items-center justify-content-between mb-2 course-footer">
+            <div class="d-flex align-items-center gap-2">
+              <img src="" class="rounded-circle" alt="Instructor">
+              <span class="course-instructor text-muted">Nicole Brown</span>
+            </div>
+            <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8 Ratings</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price-tag text-success">$19.55</span>
+            <button class="btn btn-outline-success btn-sm buy-btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Single Course Card (repeat this block) -->
+    <div class="col">
+      <div class="course-card position-relative">
+        <img src="assets/img/demo3.png" alt="Course image">
+        <span class="save-badge"><i class="bi bi-bookmark-fill"></i></span>
+        <div class="course-body">
+          <div class="d-flex flex-wrap gap-3 mb-2 course-meta">
+            <span><i class="bi bi-clock-fill me-1 text-success"></i>5h 49m</span>
+            <span><i class="bi bi-collection-fill me-1 text-success"></i>24 lectures</span>
+            <span><i class="bi bi-people-fill me-1 text-success"></i>30 Students</span>
+          </div>
+          <h6 class="fw-bold mb-1">Website Responsive Design</h6>
+          <p class="text-muted small mb-2">Learn to design websites with Figma, build with Webflow, and make a...</p>
+          <div class="d-flex align-items-center justify-content-between mb-2 course-footer">
+            <div class="d-flex align-items-center gap-2">
+              <img src="https://via.placeholder.com/25" class="rounded-circle" alt="Instructor">
+              <span class="course-instructor text-muted">Nicole Brown</span>
+            </div>
+            <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8 Ratings</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price-tag text-success">$19.55</span>
+            <button class="btn btn-outline-success btn-sm buy-btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- Single Course Card (repeat this block) -->
+    <div class="col">
+      <div class="course-card position-relative">
+        <img src="assets/img/demo.png" alt="Course image">
+        <span class="save-badge"><i class="bi bi-bookmark-fill"></i></span>
+        <div class="course-body">
+          <div class="d-flex flex-wrap gap-3 mb-2 course-meta">
+            <span><i class="bi bi-clock-fill me-1 text-success"></i>5h 49m</span>
+            <span><i class="bi bi-collection-fill me-1 text-success"></i>24 lectures</span>
+            <span><i class="bi bi-people-fill me-1 text-success"></i>30 Students</span>
+          </div>
+          <h6 class="fw-bold mb-1">Website Responsive Design</h6>
+          <p class="text-muted small mb-2">Learn to design websites with Figma, build with Webflow, and make a...</p>
+          <div class="d-flex align-items-center justify-content-between mb-2 course-footer">
+            <div class="d-flex align-items-center gap-2">
+              <img src="https://via.placeholder.com/25" class="rounded-circle" alt="Instructor">
+              <span class="course-instructor text-muted">Nicole Brown</span>
+            </div>
+            <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8 Ratings</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price-tag text-success">$19.55</span>
+            <button class="btn btn-outline-success btn-sm buy-btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Single Course Card (repeat this block) -->
+    <div class="col">
+      <div class="course-card position-relative">
+        <img src="assets/img/banner3.png" alt="Course image">
+        <span class="save-badge"><i class="bi bi-bookmark-fill"></i></span>
+        <div class="course-body">
+          <div class="d-flex flex-wrap gap-3 mb-2 course-meta">
+            <span><i class="bi bi-clock-fill me-1 text-success"></i>5h 49m</span>
+            <span><i class="bi bi-collection-fill me-1 text-success"></i>24 lectures</span>
+            <span><i class="bi bi-people-fill me-1 text-success"></i>30 Students</span>
+          </div>
+          <h6 class="fw-bold mb-1">Website Responsive Design</h6>
+          <p class="text-muted small mb-2">Learn to design websites with Figma, build with Webflow, and make a...</p>
+          <div class="d-flex align-items-center justify-content-between mb-2 course-footer">
+            <div class="d-flex align-items-center gap-2">
+              <img src="https://via.placeholder.com/25" class="rounded-circle" alt="Instructor">
+              <span class="course-instructor text-muted">Nicole Brown</span>
+            </div>
+            <span class="text-warning"><i class="bi bi-star-fill"></i> 4.8 Ratings</span>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="price-tag text-success">$19.55</span>
+            <button class="btn btn-outline-success btn-sm buy-btn">Buy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tu peux aussi changer le contenu (Free, autres titres, etc.) -->
+
+  </div>
+</div>

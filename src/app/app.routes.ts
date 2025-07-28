@@ -14,6 +14,9 @@ import {RegisterStudentComponent} from './student/register-student/register-stud
 import {RegisterJobComponent} from './organizer/jobseeker/register-job/register-job.component';
 import {HomeComponent} from './other/home/home.component';
 
+import { ResumeComponent } from './candidat/resume/resume.component';
+import { ProfilComponent } from './candidat/profil/profil.component';
+
 export const routes: Routes = [
   { path: '',component:HomeComponent},
   { path:'signin',component:SigninComponent},
@@ -27,5 +30,14 @@ export const routes: Routes = [
   { path: 'organizer/dash-learner',component:DashLearnerComponent},
   { path: 'organizer/my-course',component:MyCourseComponent},
   { path: 'organizer/my-webinar',component:MyWebinarComponent},
-  { path: 'organizer/my-earning',component:MyEarningComponent}
+  { path: 'organizer/my-earning',component:MyEarningComponent},
+  { path: 'candidat/resume',component:ResumeComponent},
+ { path: 'candidat/profil',component:ProfilComponent},
+
+
+ {
+   path: 'student',
+  loadChildren: () =>
+    import('./student/student.module').then(m => m.StudentModule)
+  },
 ];

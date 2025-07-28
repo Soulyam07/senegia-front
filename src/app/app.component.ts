@@ -22,12 +22,15 @@ export class AppComponent {
   title = 'senegia-front';
     showMainLayout = true;
 
-  constructor(private router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        // Si l’URL commence par /student, on cache le header/footer
-        this.showMainLayout = !event.urlAfterRedirects.startsWith('/student');
-      }
-    });
-  }
+ constructor(private router: Router) {
+  this.router.events.subscribe(event => {
+    if (event instanceof NavigationEnd) {
+      this.showMainLayout = !(
+        event.urlAfterRedirects.startsWith('/student') ||
+        event.urlAfterRedirects.startsWith('/candidat/profil')
+      );
+    }
+  });
+}
+
 }

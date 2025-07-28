@@ -13,16 +13,7 @@ import {RegisterLearnerComponent} from './organizer/learner/register-learner/reg
 import {RegisterStudentComponent} from './student/register-student/register-student.component';
 import {RegisterJobComponent} from './organizer/jobseeker/register-job/register-job.component';
 import {HomeComponent} from './other/home/home.component';
-import { DashComponentStudent } from './student/dash/dash.component';
-import { ChekoutComponent } from './student/chekout/chekout.component';
-import { AllcoursComponent } from './student/allcours/allcours.component';
-import { SubcripComponent } from './student/subcrip/subcrip.component';
-import { CoursComponent } from './student/cours/cours.component';
-import { PurchaseComponent } from './student/purchase/purchase.component';
-import { SavedcoursComponent } from './student/savedcours/savedcours.component';
-import { CoursdetailsComponent } from './student/coursdetails/coursdetails.component';
-import { SessionsComponent } from './student/sessions/sessions.component';
-import { StudentLayoutComponent } from './student/layouts/student-layout/student-layout.component';
+
 import { ResumeComponent } from './candidat/resume/resume.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
 

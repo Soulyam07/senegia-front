@@ -16,23 +16,25 @@ import {HomeComponent} from './other/home/home.component';
 
 import { ResumeComponent } from './candidat/resume/resume.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
+import { OffresComponent } from './candidat/offres/offres.component';
 
 export const routes: Routes = [
   { path: '',component:HomeComponent},
-  { path:'signin',component:SigninComponent},
-  { path:'organizer/register',component:RegisterOrganizerComponent},
-  {path: 'educator/register',component:RegisterLearnerComponent},
-  {path:'student/register',component:RegisterStudentComponent},
-  {path:'jobseeker/register',component:RegisterJobComponent},
-  { path:'organiser/dashboard',component:DashPrincipComponent},
-  { path : 'organiser/dash-job',component:DashComponent},
+  { path: 'signin',component:SigninComponent},
+  { path: 'organizer/register',component:RegisterOrganizerComponent},
+  { path: 'educator/register',component:RegisterLearnerComponent},
+  { path: 'student/register',component:RegisterStudentComponent},
+  { path: 'jobseeker/register',component:RegisterJobComponent},
+  { path: 'organiser/dashboard',component:DashPrincipComponent},
+  { path: 'organiser/dash-job',component:DashComponent},
   { path: 'organiser/manager-job',component:ManagedJobComponent},
   { path: 'organizer/dash-learner',component:DashLearnerComponent},
   { path: 'organizer/my-course',component:MyCourseComponent},
   { path: 'organizer/my-webinar',component:MyWebinarComponent},
   { path: 'organizer/my-earning',component:MyEarningComponent},
   { path: 'candidat/resume',component:ResumeComponent},
- { path: 'candidat/profil',component:ProfilComponent},
+  { path: 'candidat/profil',component:ProfilComponent},
+  { path: 'candidat/offres',component:OffresComponent},
 
 
  {

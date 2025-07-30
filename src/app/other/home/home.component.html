@@ -1,8 +1,8 @@
 <div class="hero-section" style="background-image: url('assets/img/banner-bg.ec50ef071e1c0bda.png')">
 
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-lg-6 hero-text text-lg-start text-center">
+  <div class="mx-auto ms-5 ">
+    <div class="row align-items-center ">
+      <div class="col-lg-6 hero-text text-lg-start text-center ">
         <h1>Es-tu prêt?<br>pour franchir la prochaine étape de votre <span class="text-primary-green">Parcours de carrière</span> ou poursuite d'études.</h1>
         <a href="#" class="hero-button">Apprendre encore plus<i class="fas fa-arrow-right"></i></a>
       </div>
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div class="mx-auto ms-5 me-5" style="margin-top: -5%;">
+<div class="mx-auto ms-5 me-5" style="margin-top: -2%;">
   <div class="row justify-content-center">
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="info-card card-yellow-btn">
@@ -332,7 +332,7 @@
 
 
 </div>
-<section class="job-section text-center">
+<section class="job-section text-center mb-5">
 
   <div class="mx-auto ms-5 me-5">
 
@@ -348,130 +348,57 @@
         <div class="carousel-inner">
 
           <!-- Slide 1 -->
-          <div class="carousel-item active">
-            <div class="row g-3">
-              <div class="col-md-4">
-                <div class="job-card text-start">
-                  <div class="d-flex justify-content-between">
-                    <small><strong>🧑‍💻 Logiciel Triazine</strong></small>
-                    <span class="badge badge-emploi">À temps plein</span>
-                  </div>
-                  <h6 class="mt-2">Ingénieur Full Stack Senior</h6>
-                  <p class="mb-1 small text-muted">CSS3, HTML5, Javascript, Bootstrap, JQuery, React.js, Next.js</p>
-                  <div class="d-flex justify-content-between small text-muted">
-                    <span>🕓 il y a 1 jour</span>
-                    <span>📍 Secteur 58, Noida</span>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <a href="#" class="text-success fw-bold small text-decoration-none">Je suis intéressé →</a>
-                    <button class="btn btn-green-outline small">Postulez maintenant</button>
-                  </div>
-                </div>
-              </div>
+          <div class="carousel-inner">
+            <div
+              class="carousel-item"
+              *ngFor="let jobGroup of groupedJobs; let i = index"
+              [class.active]="i === 0">
+              <div class="row g-3">
+                <div class="col-md-4" *ngFor="let job of jobGroup">
+                  <div class="job-card text-start">
+                    <div class="d-flex justify-content-between">
+                      <small><strong>🧑‍💻 {{ job?.legal_name }}</strong></small>
+                      <span class="badge badge-emploi">{{ job?.employee_type }}</span>
+                    </div>
+                    <h6 class="mt-2">{{ job?.title }}</h6>
 
-              <!-- Réplique de la carte -->
-              <div class="col-md-4">
-                <div class="job-card text-start">
-                  <div class="d-flex justify-content-between">
-                    <small><strong>🧑‍💻 Logiciel Triazine</strong></small>
-                    <span class="badge badge-emploi">À temps plein</span>
-                  </div>
-                  <h6 class="mt-2">Ingénieur Full Stack Senior</h6>
-                  <p class="mb-1 small text-muted">CSS3, HTML5, Javascript, Bootstrap, JQuery, React.js, Next.js</p>
-                  <div class="d-flex justify-content-between small text-muted">
-                    <span>🕓 il y a 1 jour</span>
-                    <span>📍 Secteur 58, Noida</span>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <a href="#" class="text-success fw-bold small text-decoration-none">Je suis intéressé →</a>
-                    <button class="btn btn-green-outline small">Postulez maintenant</button>
-                  </div>
-                </div>
-              </div>
+                    <ng-container *ngIf="job.skills && job.skills.length">
+                      <p class="mb-1 small text-muted">
+                        {{ job.skills.join(', ') }}
+                      </p>
+                    </ng-container>
 
-              <!-- Réplique -->
-              <div class="col-md-4">
-                <div class="job-card text-start">
-                  <div class="d-flex justify-content-between">
-                    <small><strong>🧑‍💻 Logiciel Triazine</strong></small>
-                    <span class="badge badge-emploi">À temps plein</span>
-                  </div>
-                  <h6 class="mt-2">Ingénieur Full Stack Senior</h6>
-                  <p class="mb-1 small text-muted">CSS3, HTML5, Javascript, Bootstrap, JQuery, React.js, Next.js</p>
-                  <div class="d-flex justify-content-between small text-muted">
-                    <span>🕓 il y a 1 jour</span>
-                    <span>📍 Secteur 58, Noida</span>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <a href="#" class="text-success fw-bold small text-decoration-none">Je suis intéressé →</a>
-                    <button class="btn btn-green-outline small">Postulez maintenant</button>
-                  </div>
-                </div>
-              </div>
-              <div class="w-100"></div>
 
-              <div class="col-md-4">
-                <div class="job-card text-start">
-                  <div class="d-flex justify-content-between">
-                    <small><strong>🧑‍💻 Logiciel Triazine</strong></small>
-                    <span class="badge badge-emploi">À temps plein</span>
-                  </div>
-                  <h6 class="mt-2">Ingénieur Full Stack Senior</h6>
-                  <p class="mb-1 small text-muted">CSS3, HTML5, Javascript, Bootstrap, JQuery, React.js, Next.js</p>
-                  <div class="d-flex justify-content-between small text-muted">
-                    <span>🕓 il y a 1 jour</span>
-                    <span>📍 Secteur 58, Noida</span>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <a href="#" class="text-success fw-bold small text-decoration-none">Je suis intéressé →</a>
-                    <button class="btn btn-green-outline small">Postulez maintenant</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="job-card text-start">
-                  <div class="d-flex justify-content-between">
-                    <small><strong>🧑‍💻 Logiciel Triazine</strong></small>
-                    <span class="badge badge-emploi">À temps plein</span>
-                  </div>
-                  <h6 class="mt-2">Ingénieur Full Stack Senior</h6>
-                  <p class="mb-1 small text-muted">CSS3, HTML5, Javascript, Bootstrap, JQuery, React.js, Next.js</p>
-                  <div class="d-flex justify-content-between small text-muted">
-                    <span>🕓 il y a 1 jour</span>
-                    <span>📍 Secteur 58, Noida</span>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <a href="#" class="text-success fw-bold small text-decoration-none">Je suis intéressé →</a>
-                    <button class="btn btn-green-outline small">Postulez maintenant</button>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="job-card text-start">
-                  <div class="d-flex justify-content-between">
-                    <small><strong>🧑‍💻 Logiciel Triazine</strong></small>
-                    <span class="badge badge-emploi">À temps plein</span>
-                  </div>
-                  <h6 class="mt-2">Ingénieur Full Stack Senior</h6>
-                  <p class="mb-1 small text-muted">CSS3, HTML5, Javascript, Bootstrap, JQuery, React.js, Next.js</p>
-                  <div class="d-flex justify-content-between small text-muted">
-                    <span>🕓 il y a 1 jour</span>
-                    <span>📍 Secteur 58, Noida</span>
-                  </div>
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <a href="#" class="text-success fw-bold small text-decoration-none">Je suis intéressé →</a>
-                    <button class="btn btn-green-outline small">Postulez maintenant</button>
+                    <div class="d-flex justify-content-between small text-muted">
+                      <span>🕓 {{ job?.posted_date | date:'short' }}</span>
+                      <span>📍 {{ job?.address }}</span>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                      <button  (click)="viewJobDetails(job.job_id)" class="btn btn-outline-primary">
+                        voir details →
+                      </button>
+                      <button
+                        *ngIf="!appliedJobs.has(job.job_id)"
+                        class="btn btn-green-outline small"
+                        (click)="postuler(job.job_id)">
+                        Postuler maintenant
+                      </button>
+
+                      <button
+                        *ngIf="appliedJobs.has(job.job_id)"
+                        class="btn btn-green-outline small"
+                        (click)="cancelPostuler(job.job_id)">
+                        Ne pas postuler
+                      </button>
+
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
 
           <!-- Slide 2 (répéter autant que nécessaire) -->
           <div class="carousel-item">
@@ -612,7 +539,23 @@
   </div>
 </section>
 
-<div class="educator-section-custom">
+
+
+<div class="mx-auto ms-5 me-5">
+  <div class="row  mb-3 mt-5 " style="margin-top: 10%;">
+    <div class="col-8" >
+      <h3 class="text-muted mb-1" style="margin-left: 60%">Rejoignez notre réseau d'éducateurs</h3>
+    </div>
+
+    <div class="col">
+      <img src="assets/img/rYellowArrow.png" alt="" style="position: absolute;">
+    </div>
+
+
+
+  </div>
+</div>
+<div class="educator-section-custom mb-5">
   <div class="background-diamond-custom"></div>
   <div class="mx-auto">
     <div class="row align-items-start">
@@ -624,14 +567,85 @@
         </div>
       </div>
 
-      <div class="col-lg-8 d-flex align-items-center">
+      <div class="col-lg-8 d-flex align-items-center mb-5">
         <div class="educator-content-card-custom w-100">
           <h2 class="h3 fw-bold text-dark mb-3">Éducateur</h2>
           <p class="text-secondary small mb-3">Notre équipe pédagogique dévouée s'engage à offrir un enseignement stimulant, innovant et personnalisé, adapté aux besoins spécifiques de chaque élève. Trouvez et contactez plus rapidement les candidats qui vous correspondent. Cette recherche de talents vous permet de trouver les candidats qui pourraient correspondre parfaitement à votre poste.</p>
           <p class="text-secondary small mb-0">Rejoignez-nous dans ce voyage de découverte et de croissance !</p>
-          <a href="#" class="btn btn-warning btn-lg fw-bold py-2 rounded-3 mt-4 d-inline-flex align-items-center">Devenez éducateur<i class="fas fa-arrow-right ms-2"></i></a>
+          <a routerLink="/educator/register" class="btn btn-warning btn-lg fw-bold py-2 rounded-3 mt-4 d-inline-flex align-items-center">Devenez éducateur<i class="fas fa-arrow-right ms-2"></i></a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+<div class="row ms-5 me-5 mb-3  mt-5">
+
+  <div class="col-5">
+    <img src="assets/img/green-arrow.png" alt="" style="position: absolute;margin-left: 20%">
+  </div>
+  <div class="col">
+    <h3 class="text-muted mb-1">Rejoignez notre réseau d'employeurs</h3>
+  </div>
+
+
+</div>
+
+<div class="educator-section-custom">
+  <div class="background-diamond-custom"></div>
+  <div class="mx-auto mb-5">
+    <div class="row align-items-start">
+
+
+      <div class="col-lg-8 d-flex align-items-center">
+        <div class="educator-content-card-custom w-100">
+          <h2 class="h3 fw-bold text-dark mb-3">Employeur</h2>
+          <p class="text-secondary small mb-3">Constituez l'équipe de vos rêves – Trouvez les meilleurs talents ici ! Accédez à un vivier de professionnels talentueux prêts à contribuer au succès de votre entreprise.</p>
+          <p class="text-secondary small mb-0">Publiez des offres d'emploi et connectez-vous avec des candidats potentiels sans effort.</p>
+          <a routerLink="/jobseeker/register" class="btn btn-warning btn-lg fw-bold py-2 rounded-3 mt-4 d-inline-flex align-items-center">Publier une offre d'emploi<i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 mb-5">
+        <div class="educator-image-container-custom">
+
+          <img src="assets/img/job-seeker-employer.png" alt="Homme au tableau" class="educator-image-custom img-22">
+          <img src="assets/img/job-seeker.png" alt="Enfant avec tablette" class="educator-image-custom img-33">
+          <img src="assets/img/job-seeker-02.png" alt="Femme enseignante" class="educator-image-custom img-11">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<section class="hero-section1" style=" background: url('assets/img/AppDownload.c51e94af7f044515.png') ; background-size: 100% 100%;background-position: right ">
+  <div class="mx-auto mt-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0 phone-mockups-container">
+        <div class="phone-mockups">
+          <img src="assets/img/downloadImage.png" alt="Maquette de téléphone gauche" class="img-fluid phone-left">
+
+        </div>
+      </div>
+      <div class="col-lg-6 text-section">
+        <h1>Téléchargez notre application</h1>
+        <p>Améliorez votre parcours professionnel avec notre application : accédez à des opportunités d'emploi, à des ressources de développement des compétences et à des conseils de carrière.</p>
+        <p class="mb-4">Téléchargez-la maintenant pour optimiser vos efforts en matière d'éducation et de recherche d'emploi.</p>
+
+        <div class="d-flex flex-wrap app-store-buttons">
+          <a href="#" class="me-3 mb-3">
+            <img src="assets/img/icons/google-play-icon.png" alt="Disponible sur Google Play">
+          </a>
+          <a href="#" class="mb-3">
+            <img src="assets/img/icons/app-store-icon.png" alt="Télécharger sur l'App Store">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+

@@ -21,3 +21,29 @@
   color: #ff6600;
   border-bottom: 2px solid #ff6600;
 }
+
+
+.job-card {
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+//.job-banner {
+//  height: 200px;
+//  background: url('https://via.placeholder.com/600x200') center/cover no-repeat;
+//}
+.apply-btn {
+  border-radius: 30px;
+  padding: 6px 20px;
+}
+.section-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+.info-label {
+  font-weight: 600;
+}
+.info-value {
+  color: #6c757d;
+}

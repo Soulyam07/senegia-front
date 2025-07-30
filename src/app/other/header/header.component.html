@@ -15,24 +15,24 @@
     </button>
 
     <!-- Links -->
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse" id="navbarNav" *ngIf="!loggedDem;else noLogged">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item px-2">
-          <a class="nav-link" href="#">Courses</a>
+          <a class="nav-link" routerLink="/courses">Courses</a>
         </li>
         <li class="nav-item px-2">
-          <a class="nav-link" href="#">Jobs</a>
+          <a class="nav-link" routerLink="/jobs">Jobs</a>
         </li>
         <li class="nav-item px-2">
-          <a class="nav-link" href="#">Subscription Plan</a>
+          <a class="nav-link" routerLink="/sub">Subscription Plan</a>
         </li>
         <li class="nav-item px-2">
-          <a class="nav-link" href="#">Contact Us</a>
+          <a class="nav-link" routerLink="/contact">Contact Us</a>
         </li>
       </ul>
 
       <!-- Buttons -->
-      <div class="d-flex gap-2">
+      <div class="d-flex gap-2" >
         <button class="btn btn-outline-success" routerLink="/signin">Sign In</button>
 
         <!-- Register Dropdown -->
@@ -42,23 +42,64 @@
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="/student/register">Apprenant/Etudiant</a></li>
-            <li><a class="dropdown-item"routerLink="/jobseeker/register">Demandeur Emploi</a></li>
+            <li><a class="dropdown-item" routerLink="/jobseeker/register">Demandeur Emploi</a></li>
             <li><a class="dropdown-item" routerLink="/educator/register">Educateur Individuel</a></li>
             <li><a class="dropdown-item" routerLink="/organizer/register">Organisation/Agence</a></li>
           </ul>
         </div>
 
         <!-- Language Dropdown -->
-        <div class="dropdown">
-          <button class="btn btn-gold dropdown-toggle" type="button" data-bs-toggle="dropdown">
-            English
+<!--        <div class="dropdown">-->
+<!--          <button class="btn btn-gold dropdown-toggle" type="button" data-bs-toggle="dropdown">-->
+<!--            English-->
+<!--          </button>-->
+<!--          <ul class="dropdown-menu">-->
+<!--            <li><a class="dropdown-item" href="#">Français</a></li>-->
+<!--            <li><a class="dropdown-item" href="#">العربية</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+
+      </div>
+
+    </div>
+    <ng-template #noLogged>
+      <div class="d-flex align-items-center gap-4 p-3">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item px-2">
+            <a class="nav-link" routerLink="/courses">Courses</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" routerLink="/jobs">Jobs</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" routerLink="/contact">Contact Us</a>
+          </li>
+        </ul>
+
+<!--        &lt;!&ndash; Notification Icon &ndash;&gt;-->
+<!--        <i class="bi bi-bell-fill fs-4 text-dark"></i>-->
+
+        <!-- Profile Icon in Gold Circle -->
+        <div class="dropstart">
+          <button type="button"
+                  class="rounded-circle bg-white border border-warning d-flex align-items-center justify-content-center "
+                  style="width: 40px; height: 40px;"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+            <i class="bi bi-person-fill fs-5 text-warning"></i>
           </button>
+
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Français</a></li>
-            <li><a class="dropdown-item" href="#">العربية</a></li>
+            <li><a class="dropdown-item" routerLink="/jobseeker/dashboard" *ngIf="emailDem!=null">Dashboard</a></li>
+            <li><a class="dropdown-item" routerLink="/organiser/dashboard" *ngIf="emailOrg!=null">Dashboard</a></li>
+            <li><a class="dropdown-item" routerLink="/organiser/my-profile">Voir profils</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" (click)="signout()">Deconnexion</a></li>
           </ul>
         </div>
+
       </div>
-    </div>
+
+    </ng-template>
   </div>
 </nav>

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from './other/header/header.component';
 import {FooterComponent} from './other/footer/footer.component';
+
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,9 @@ import {FooterComponent} from './other/footer/footer.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent  {
   title = 'senegia-front';
+
+
+
 }

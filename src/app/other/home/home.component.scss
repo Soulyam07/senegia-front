@@ -61,7 +61,7 @@ $green-btn-color: #28a745;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: darken($primary-green, 10%); // Utilise la fonction darken de Sass
+    //background-color: darken($primary-green, 10%); // Utilise la fonction darken de Sass
     color: white;
   }
 
@@ -186,8 +186,8 @@ $green-btn-color: #28a745;
     border-color: $yellow-btn-color;
     color: #333; // Dark text for light button
     &:hover {
-      background-color: darken($yellow-btn-color, 10%);
-      border-color: darken($yellow-btn-color, 10%);
+      //background-color: darken($yellow-btn-color, 10%);
+      //border-color: darken($yellow-btn-color, 10%);
     }
   }
 }
@@ -202,8 +202,8 @@ $green-btn-color: #28a745;
     border-color: $teal-btn-color;
     color: white;
     &:hover {
-      background-color: darken($teal-btn-color, 10%);
-      border-color: darken($teal-btn-color, 10%);
+      //background-color: darken($teal-btn-color, 10%);
+      //border-color: darken($teal-btn-color, 10%);
     }
   }
 }
@@ -218,8 +218,8 @@ $green-btn-color: #28a745;
     border-color: $orange-btn-color;
     color: white;
     &:hover {
-      background-color: darken($orange-btn-color, 10%);
-      border-color: darken($orange-btn-color, 10%);
+      //background-color: darken($orange-btn-color, 10%);
+      //border-color: darken($orange-btn-color, 10%);
     }
   }
 }
@@ -234,8 +234,8 @@ $green-btn-color: #28a745;
     border-color: $green-btn-color;
     color: white;
     &:hover {
-      background-color: darken($green-btn-color, 10%);
-      border-color: darken($green-btn-color, 10%);
+      //background-color: darken($green-btn-color, 10%);
+      //border-color: darken($green-btn-color, 10%);
     }
   }
 }
@@ -401,7 +401,7 @@ $green-btn-color: #28a745;
 .educator-section-custom {
   background-color: #f8f9fa;
   padding: 60px 0;
-  position: relative;
+  //position: relative;
   overflow: hidden;
 }
 
@@ -410,7 +410,7 @@ $green-btn-color: #28a745;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   padding: 150px;
-  position: relative;
+  //position: relative;
   z-index: 2;
 }
 
@@ -431,6 +431,10 @@ $green-btn-color: #28a745;
 .educator-image-custom.img-2 { width: 200px; height: 250px; top: 10%; left: 80%; z-index: 4; }
 .educator-image-custom.img-3 { width: 200px; height: 250px; top: 75%; left: 80%;; z-index: 3; }
 
+.educator-image-custom.img-11 { width: 250px; height: 400px; top: 70%;left: 20%;  transform: translateY(-50%); z-index: 3; }
+.educator-image-custom.img-22 { width: 200px; height: 250px; top: 10%; left: -10%; z-index: 4; }
+.educator-image-custom.img-33 { width: 200px; height: 250px; top: 75%; left: -10%; z-index: 3; }
+
 /* Small background shape */
 .background-diamond-custom {
   position: absolute;
@@ -442,7 +446,7 @@ $green-btn-color: #28a745;
   background-size: contain;
   opacity: 0.3;
   transform: rotate(30deg);
-  z-index: 1;
+  z-index: 0;
 }
 
 /* Responsive Adjustments (minimal) */
@@ -464,5 +468,70 @@ $green-btn-color: #28a745;
   }
   .background-diamond-custom {
     display: none;
+  }
+}
+
+.hero-section1 {
+  /* Couleur de fond légère, à ajuster */
+  padding: 100px 0;
+
+  overflow: hidden; /* Pour contenir les images de téléphone */
+
+}
+.text-section h1 {
+  color: #ffc107; /* Couleur jaune pour le titre, à ajuster */
+  font-size: 2.5rem; /* Taille du titre */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.text-section p {
+  color: #495057; /* Couleur du texte */
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.app-store-buttons img {
+  height: 50px; /* Taille des boutons des stores */
+  margin-right: 15px;
+}
+.phone-mockups {
+  position: relative;
+  height: 100%; /* S'assure que le conteneur a une hauteur */
+  display: flex;
+  align-items: center; /* Centre les téléphones verticalement */
+  justify-content: center; /* Centre les téléphones horizontalement */
+}
+.phone-mockups img {
+  position: absolute; /* Permet le chevauchement */
+  height: 550px; /* Taille des maquettes de téléphone */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 30px; /* Rayon de bordure pour simuler l'écran */
+}
+.phone-mockups .phone-left {
+  left: 10%; /* Positionnement du téléphone de gauche */
+  top: 50%;
+  transform: translateY(-50%) scale(0.9); /* Légèrement plus petit et décalé */
+  z-index: 1; /* Pour qu'il soit derrière l'autre */
+  opacity: 0.8; /* Légèrement transparent */
+}
+.phone-mockups .phone-right {
+  right: 15%; /* Positionnement du téléphone de droite */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2; /* Pour qu'il soit devant */
+}
+
+/* Ajustements pour les petits écrans */
+@media (max-width: 991.98px) {
+  .hero-section1 {
+    padding: 70px 0;
+  }
+  .phone-mockups {
+    display: none; /* Cache les maquettes de téléphone sur les petits écrans pour un design plus simple */
+  }
+  .text-section {
+    text-align: center;
+  }
+  .app-store-buttons {
+    justify-content: center; /* Centre les boutons sur mobile */
   }
 }

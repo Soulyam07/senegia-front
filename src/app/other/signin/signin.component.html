@@ -14,23 +14,31 @@
             <p class="text-success fw-semibold mb-1">Se connecter!</p>
             <p class="text-muted mb-4">Connectez-vous pour accéder à votre compte et débloquer des fonctionnalités exclusives.</p>
 
-            <form>
+            <form [formGroup]="signinFrom" (ngSubmit)="connexion()">
               <div class="mb-3">
-                <label for="email" class="form-label">Email ID</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email ID" required />
+                <label for="email" class="form-label" >Email ID</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email ID"  formControlName="email"/>
+                <div *ngIf="signinFrom.get('email')?.invalid && signinFrom.get('email')?.touched" class="text-danger">
+                  Email invalide
+                </div>
               </div>
 
               <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter password" required />
+                <input type="password" class="form-control" id="password" placeholder="Enter password"   formControlName="password"/>
+                <div *ngIf="signinFrom.get('password')?.invalid && signinFrom.get('password')?.touched" class="text-danger">
+                  Mot de passe requis
+                </div>
               </div>
 
               <div class="d-flex justify-content-end mb-4">
                 <a href="#" class="text-decoration-none text-success">Forgot Password?</a>
               </div>
 
-              <button type="submit" class="btn btn-success w-100">Sign In</button>
+              <button type="submit" class="btn btn-success w-100" [disabled]="signinFrom.invalid">Sign In</button>
             </form>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+            <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
           </div>
         </div>
       </div>

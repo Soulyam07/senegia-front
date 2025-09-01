@@ -20,7 +20,9 @@ export const environment={
   API_EndPoint_CANDIDAT:'http://localhost/senegia-back/candidat',
   API_EndPoint_STUDENT:'http://localhost/senegia-back/student',
   API_EndPoint_SAVEJOB:'http://localhost/senegia-back/saveJob',
-  API_EndPoint_CANDIDATURE:'http://localhost/senegia-back/candidature'
+  API_EndPoint_CANDIDATURE:'http://localhost/senegia-back/candidature',
+  API_EndPoint_COURS:'http://localhost/senegia-back/cours',
+  API_EndPoint_CATEGORY:'http://localhost/senegia-back/category'
 }
 
 

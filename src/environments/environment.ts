@@ -12,14 +12,19 @@
 //  API_EndPoint_OTHER:'http://localhost/api_Coris/other/'
 // }
 
+
 // export const environment={
 //   production:false,
-//   API_EndPoint_ORG:'http://localhost/senegia-front/entreprise',
-//   API_EndPoint_JOB: 'http://localhost/senegia-front/emploi',
-//   API_EndPoint_CANDIDAT:'http://localhost/senegia-front/candidat',
-//   API_EndPoint_STUDENT:'http://localhost/senegia-front/student',
-//   API_EndPoint_SAVEJOB:'http://localhost/senegia-front/saveJob',
-//   API_EndPoint_CANDIDATURE:'http://localhost/senegia-front/candidature'
+//   API_EndPoint_ORG:'http://localhost/senegia-back/entreprise',
+//   API_EndPoint_JOB: 'http://localhost/senegia-back/emploi',
+//   API_EndPoint_CANDIDAT:'http://localhost/senegia-back/candidat',
+//   API_EndPoint_STUDENT:'http://localhost/senegia-back/student',
+//   API_EndPoint_SAVEJOB:'http://localhost/senegia-back/saveJob',
+//   API_EndPoint_SAVECOUR:'http://localhost/senegia-back/saveCours',
+//   API_EndPoint_CANDIDATURE:'http://localhost/senegia-back/candidature',
+//   API_EndPoint_COURS:'http://localhost/senegia-back/cours',
+//   API_EndPoint_CATEGORY:'http://localhost/senegia-back/category',
+//   API_EndPoint_SUB: 'http://localhost/senegia-back/subCours',
 // }
 
 export const environment={
@@ -28,9 +33,26 @@ export const environment={
   API_EndPoint_JOB: 'https://coya.apitasn.com/api/emploi',
   API_EndPoint_CANDIDAT:'https://coya.apitasn.com/api/candidat',
   API_EndPoint_STUDENT:'https://coya.apitasn.com/api/student',
-  API_EndPoint_SAVEJOB:'https://coya.apitasn.com/api/savejob',
-  API_EndPoint_CANDIDATURE:'https://coya.apitasn.com/api/candidature'
+  API_EndPoint_SAVEJOB:'https://coya.apitasn.com/api/saveJob',
+  API_EndPoint_SAVECOUR:'https://coya.apitasn.com/api/saveCours',
+  API_EndPoint_CANDIDATURE:'https://coya.apitasn.com/api/candidature',
+  API_EndPoint_COURS:'https://coya.apitasn.com/api/cours',
+  API_EndPoint_CATEGORY:'https://coya.apitasn.com/api/category',
+  API_EndPoint_SUB: 'https://coya.apitasn.com/api/subCours',
 }
+
+
+// export const environment={
+//   production:false,
+//   API_EndPoint_ORG:'https://coya.apitasn.com/api/entreprise',
+//   API_EndPoint_JOB: 'https://coya.apitasn.com/api/emploi',
+//   API_EndPoint_CANDIDAT:'https://coya.apitasn.com/api/candidat',
+//   API_EndPoint_STUDENT:'https://coya.apitasn.com/api/student',
+//   API_EndPoint_SAVEJOB:'https://coya.apitasn.com/api/savejob',
+//   API_EndPoint_COURS:'https://coya.apitasn.com/api/cours',
+//   API_EndPoint_CANDIDATURE:'https://coya.apitasn.com/api/candidature',
+//   API_EndPoint_CATEGORY:'https://coya.apitasn.com/api/category'
+// }
 
 
 

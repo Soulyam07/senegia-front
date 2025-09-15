@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   loggedDem: boolean = false;
   emailOrg: string | null = null;
   emailDem: string | null = null;
+  emailStd:string | null = null;
 
   ngOnInit() {
 
@@ -41,6 +42,7 @@ export class HeaderComponent implements OnInit {
       this.loggedDem = loggedIn;
       this.emailOrg = this.authService.getUsernameOr();
       this.emailDem = this.authService.getUsernameDem();
+      this.emailStd = this.authService.getUsernameStd();
     });
 
 

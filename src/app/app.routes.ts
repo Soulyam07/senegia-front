@@ -24,11 +24,13 @@ import {AppliedJobsComponent} from './organizer/jobseeker/applied-jobs/applied-j
 import {JobDetailsComponent} from './organizer/jobseeker/job-details/job-details.component';
 import {ProfilComponent} from './organizer/profil/profil.component';
 import {MyResumeComponent} from './organizer/jobseeker/my-resume/my-resume.component';
+import {CoursdetailsComponent} from './student/coursdetails/coursdetails.component';
 
 export const routes: Routes = [
   { path: '',component:HomeComponent},
   { path:'signin',component:SigninComponent},
   { path:'courses',component:CoursesComponent},
+  { path:'courses/:id',component:CoursdetailsComponent},
   { path: 'jobs',component:JobsComponent},
   { path: 'jobs/:id', component: JobDetailsComponent },
   {path: 'sub',component:SubComponent},

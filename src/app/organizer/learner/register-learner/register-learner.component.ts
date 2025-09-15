@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-register-learner',
@@ -6,6 +7,14 @@ import { Component } from '@angular/core';
   templateUrl: './register-learner.component.html',
   styleUrl: './register-learner.component.scss'
 })
-export class RegisterLearnerComponent {
+export class RegisterLearnerComponent implements OnInit{
+
+  learnerForm!:FormGroup;
+
+  // constructor() {
+  // }
+
+  ngOnInit() {
+  }
 
 }

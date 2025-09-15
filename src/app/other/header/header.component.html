@@ -92,6 +92,8 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" routerLink="/jobseeker/dashboard" *ngIf="emailDem!=null">Dashboard</a></li>
             <li><a class="dropdown-item" routerLink="/organiser/dashboard" *ngIf="emailOrg!=null">Dashboard</a></li>
+            <li><a class="dropdown-item" routerLink="/student/dash" *ngIf="emailStd!=null">Dashboard</a></li>
+
             <li><a class="dropdown-item" routerLink="/organiser/my-profile">Voir profils</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" (click)="signout()">Deconnexion</a></li>

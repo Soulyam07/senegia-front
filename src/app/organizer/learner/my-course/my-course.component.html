@@ -3,10 +3,10 @@
   <div class="mx-auto  d-flex justify-content-between align-items-center flex-wrap">
     <div class="d-flex align-items-center gap-3">
       <img src="../../../assets/img/user.jpg" alt="User Photo" class="profile-pic">
-      <div>
-        <h4 class="mb-0">Abdou Diambar</h4>
-        <div><i class="bi bi-envelope-fill me-2"></i> abcdf...fsdfsd.com</div>
-        <div><i class="bi bi-telephone-fill me-2"></i> +91 1234567890</div>
+      <div >
+        <h4 class="mb-0">{{ organisation?.legal_name }}</h4>
+        <div><i class="bi bi-envelope-fill me-2"></i> {{ organisation?.email }}</div>
+        <div><i class="bi bi-telephone-fill me-2"></i> {{ organisation?.mobile_number }} / {{ organisation?.contact_person_name }}</div>
       </div>
     </div>
     <div>
@@ -20,13 +20,13 @@
   <div class="d-flex gap-3 justify-content-start flex-wrap">
     <button class="btn bg-white tab-button  text-dark fw-bold ">
 
-      <h4 style="font-size: 22px">Dashboard</h4>
+      <h4 style="font-size: 22px" routerLink="/organiser/dashboard">Dashboard</h4>
     </button>
     <button class="btn bg-white tab-button active text-success fw-bold">
-      <h4 style="font-size: 22px">Courses</h4>
+      <h4 style="font-size: 22px" routerLink="/organizer/dash-learner">Courses</h4>
     </button>
     <button class="btn bg-white tab-button text-dark fw-bold">
-      <h4 style="font-size: 22px" >Jobs</h4>
+      <h4 style="font-size: 22px" routerLink="/organiser/dash-job">Jobs</h4>
     </button>
   </div>
 </div>
@@ -46,7 +46,7 @@
       <a class="nav-link text-dark" routerLink="/organizer/my-earning">Mes gains</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Meon abonnement</a>
+      <a class="nav-link text-dark" routerLink="">Mon abonnement</a>
     </li>
 
   </ul>
@@ -59,7 +59,7 @@
       <div class="col-md-6 d-flex align-items-center">
         <div>
           <h2 class="mb-0">Mes Cours</h2>
-          <p class="text-muted mb-0">Affichage de 35 résultats</p>
+          <p class="text-muted mb-0">Affichage de {{ cours?.length }} cours</p>
         </div>
       </div>
       <div class="col-md-6 d-flex justify-content-end align-items-center">
@@ -70,212 +70,228 @@
               Cours Actif
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Une autre action</a></li>
-              <li><a class="dropdown-item" href="#">Autre chose a dire</a></li>
+              <li><a class="dropdown-item" href="#">Non Actif</a></li>
+              <li><a class="dropdown-item" href="#">Actif</a></li>
+
             </ul>
           </div>
         </div>
-        <button class="btn btn-success d-flex align-items-center">
+        <button class="btn btn-success d-flex align-items-center"  data-bs-toggle="modal" data-bs-target="#exampleModal">
           <i class="bi bi-plus me-1"></i> Nouveau Cours
         </button>
+        <div *ngIf="showSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+          ✅ Le cours a été enregistré avec succès !
+          <button type="button" class="btn-close" (click)="showSuccess=false"></button>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Creation de cours</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div *ngIf="seeCours">
+                <form [formGroup]="coursesForm" (ngSubmit)="onsubmit()">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label" for="title">Titre du cours</label>
+                    <input type="text" class="form-control" id="title" placeholder="Titre du cours" formControlName="title">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="title">Prix du cours</label>
+                    <input type="text" class="form-control" id="title" placeholder="Prix du cours" formControlName="price">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="title">Language du cours </label>
+                    <input type="text" class="form-control" id="title" placeholder="Language du cours" formControlName="language">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <label class="form-label" for="access">Type d'acces du cours </label>
+                    <input type="text" class="form-control" id="access" placeholder="Temps plein,demi journee,..." formControlName="access">
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="access">Niveau du cours </label>
+                    <select class="form-select" id="access" formControlName="level" required>
+                      <option selected>Choisir un niveau</option>
+                      <option value="1">Debutant</option>
+                      <option value="2">Intermediaire</option>
+                      <option value="3">Avance</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label class="form-label" for="access">Category du cours </label>
+                    <select class="form-select" id="access" formControlName="category" required>
+                      <option selected>Choisir une category</option>
+                      <div *ngFor="let cat of category">
+                      <option [value]="cat.id">{{ cat.name }}</option>
+                      </div>
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-8">
+                    <label for="description" class="form-label">Description du cours</label>
+                    <textarea class="form-control"  placeholder="Donnez un description bref du cours" required formControlName="description"></textarea>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="logoUpload" class="form-label">Télécharger L'image du cours</label>
+                    <input type="file" class="form-control" id="logoUpload" formControlName="image" (change)="onFileSelected($event)"/>
+                  </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end">
+                  <button type="reset" class="btn btn-secondary me-3">Annuler</button>
+                  <button type="submit" class="btn btn-continue">Continuer</button>
+                </div>
+                </form>
+                </div>
+                <div *ngIf="seeSection">
+                  <form [formGroup]="courSection" (ngSubmit)="onSubmitCoursAvecChapitres()">
+                    <div formArrayName="chapitres">
+
+                      <div *ngFor="let chapitre of chapitres.controls; let iChapitre = index" [formGroupName]="iChapitre" class="border p-3 mb-3 rounded">
+
+                        <h5 class="text-center">Chapitre {{ iChapitre + 1 }}</h5>
+
+                        <div class="row mb-3">
+                          <div class="col-md-4">
+                            <label>Titre</label>
+                            <input type="text" class="form-control" formControlName="titleC">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Durée</label>
+                            <input type="text" class="form-control" formControlName="durationC">
+                          </div>
+                          <div class="col-md-4">
+                            <label>Total</label>
+                            <input type="text" class="form-control" formControlName="totalC">
+                          </div>
+                        </div>
+
+                        <!-- Leçons -->
+                        <h6>Leçons</h6>
+                        <div formArrayName="lecons">
+                          <div *ngFor="let lecon of lecons(iChapitre).controls; let j = index" [formGroupName]="j" class="row mb-2">
+
+                            <div class="col-md-4">
+                              <label>Titre Leçon</label>
+                              <input type="text" class="form-control" formControlName="title">
+                            </div>
+
+                            <div class="col-md-3">
+                              <label>Statut</label>
+                              <select class="form-select" formControlName="is_preview">
+                                <option value="1">Actif</option>
+                                <option value="0">Non actif</option>
+                              </select>
+                            </div>
+
+                            <div class="col-md-4">
+                              <label>Contenu</label>
+                              <textarea class="form-control" formControlName="content"></textarea>
+                            </div>
+
+                            <div class="col-md-1 d-flex align-items-end">
+                              <button type="button" class="btn btn-danger btn-sm rounded-circle" (click)="removeLecon(iChapitre, j)">
+                                <i class="bi bi-x-lg"></i>
+                              </button>
+                            </div>
+
+                          </div>
+
+                          <button type="button" class="btn btn-sm btn-primary mt-2" (click)="addLecon(iChapitre)">
+                            + Ajouter Leçon
+                          </button>
+                        </div>
+
+                        <div class="text-end mt-2">
+                          <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeChapitre(iChapitre)">
+                            Supprimer Chapitre
+                          </button>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="text-center mt-3">
+                      <button type="button" class="btn btn-outline-primary mx-3" (click)="goback()">Go Back</button>
+                      <button type="button" class="btn btn-success" (click)="addChapitre()">+ Ajouter Chapitre</button>
+                      <button type="submit" class="btn btn-primary ms-2">Enregistrer</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 
   <div class="mx-auto ms-3 me-3 my-4">
-    <div class="card p-3 shadow-sm rounded-4 mb-4">
-      <div class="d-flex justify-content-between align-items-center flex-wrap">
+    <div *ngIf="cours;else noCours">
+      <div class="card p-3 shadow-sm rounded-4 mb-4" *ngFor="let cour of cours">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
 
-        <!-- Partie gauche : image + texte -->
-        <div class="d-flex align-items-start flex-grow-1 gap-3">
-          <!-- Image -->
-          <img src="assets/img/dummy.png" alt="Cours" class="rounded-3" style="width: 80px; height: 80px; object-fit: cover;">
+          <!-- Partie gauche : image + texte -->
+          <div class="d-flex align-items-start flex-grow-1 gap-3" >
+            <!-- Image -->
+            <img   [src]="cours.img || 'assets/img/dummy.png'"  alt="Cours" class="rounded-3" style="width: 80px; height: 80px; object-fit: cover;">
 
-          <!-- Texte -->
-          <div>
-            <h6 class="fw-bold mb-1">Conception Réactive Du Site Web</h6>
-            <p class="text-muted mb-2 small">
-              Apprenez à concevoir des sites Web avec Figma, à créer avec Web Flow et à créer un
-            </p>
+            <!-- Texte -->
+            <div>
+              <h6 class="fw-bold mb-1">{{ cour?.title }}</h6>
+              <p class="text-muted mb-2 small">
+                {{ cour?.description }}
+              </p>
 
-            <!-- Badges -->
-            <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-clock me-1"></i> 5H 55M
+              <!-- Badges -->
+              <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-light-success text-success d-flex align-items-center py-2 rounded-pill">
+              <i class="bi bi-clock me-1"></i> {{ cour?.total_duration }}
             </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-film me-1"></i> 22 conférences
+                <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
+              <i class="bi bi-film me-1"></i> {{ cour?.total_chapitres }} Chapitres
             </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
+                <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
               <i class="bi bi-person me-1"></i> 33 étudiants
             </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="text-end">
-          <small class="text-muted">prix</small>
-          <div class="fw-bold fs-6">19,99 XOF</div>
-        </div>
-        <!-- Partie droite : prix + actions -->
-        <div class="d-flex flex-column align-items-end justify-content-between ms-3" style="min-width: 150px;">
-
-          <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-outline-secondary btn-sm rounded-3" title="Modifier">
-              <i class="bi bi-pencil"></i>
-            </button>
-            <button class="btn btn-outline-danger btn-sm rounded-3" title="Supprimer">
-              <i class="bi bi-trash"></i>
-            </button>
+          <div class="text-end">
+            <small class="text-muted">prix</small>
+            <div class="fw-bold fs-6">{{ cour?.price }} XOF</div>
           </div>
-        </div>
+          <!-- Partie droite : prix + actions -->
+          <div class="d-flex flex-column align-items-end justify-content-between ms-3" style="min-width: 150px;">
 
-      </div>
-    </div>
-    <div class="card p-3 shadow-sm rounded-4 mb-4">
-      <div class="d-flex justify-content-between align-items-center flex-wrap">
-
-        <!-- Partie gauche : image + texte -->
-        <div class="d-flex align-items-start flex-grow-1 gap-3">
-          <!-- Image -->
-          <img src="assets/img/dummy.png" alt="Cours" class="rounded-3" style="width: 80px; height: 80px; object-fit: cover;">
-
-          <!-- Texte -->
-          <div>
-            <h6 class="fw-bold mb-1">Conception Réactive Du Site Web</h6>
-            <p class="text-muted mb-2 small">
-              Apprenez à concevoir des sites Web avec Figma, à créer avec Web Flow et à créer un
-            </p>
-
-            <!-- Badges -->
-            <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-clock me-1"></i> 5H 55M
-            </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-film me-1"></i> 22 conférences
-            </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-person me-1"></i> 33 étudiants
-            </span>
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn btn-outline-secondary btn-sm rounded-3" title="Modifier">
+                <i class="bi bi-pencil"></i>
+              </button>
+              <button class="btn btn-outline-danger btn-sm rounded-3" title="Supprimer" (click)="deleteCour(cour.id)">
+                <i class="bi bi-trash"></i>
+              </button>
             </div>
           </div>
-        </div>
-        <div class="text-end">
-          <small class="text-muted">prix</small>
-          <div class="fw-bold fs-6">19,99 XOF</div>
-        </div>
-        <!-- Partie droite : prix + actions -->
-        <div class="d-flex flex-column align-items-end justify-content-between ms-3" style="min-width: 150px;">
 
-          <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-outline-secondary btn-sm rounded-3" title="Modifier">
-              <i class="bi bi-pencil"></i>
-            </button>
-            <button class="btn btn-outline-danger btn-sm rounded-3" title="Supprimer">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
         </div>
-
       </div>
     </div>
-    <div class="card p-3 shadow-sm rounded-4 mb-4">
-      <div class="d-flex justify-content-between align-items-center flex-wrap">
 
-        <!-- Partie gauche : image + texte -->
-        <div class="d-flex align-items-start flex-grow-1 gap-3">
-          <!-- Image -->
-          <img src="assets/img/dummy.png" alt="Cours" class="rounded-3" style="width: 80px; height: 80px; object-fit: cover;">
-
-          <!-- Texte -->
-          <div>
-            <h6 class="fw-bold mb-1">Conception Réactive Du Site Web</h6>
-            <p class="text-muted mb-2 small">
-              Apprenez à concevoir des sites Web avec Figma, à créer avec Web Flow et à créer un
-            </p>
-
-            <!-- Badges -->
-            <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-clock me-1"></i> 5H 55M
-            </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-film me-1"></i> 22 conférences
-            </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-person me-1"></i> 33 étudiants
-            </span>
-            </div>
-          </div>
-        </div>
-        <div class="text-end">
-          <small class="text-muted">prix</small>
-          <div class="fw-bold fs-6">19,99 XOF</div>
-        </div>
-        <!-- Partie droite : prix + actions -->
-        <div class="d-flex flex-column align-items-end justify-content-between ms-3" style="min-width: 150px;">
-
-          <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-outline-secondary btn-sm rounded-3" title="Modifier">
-              <i class="bi bi-pencil"></i>
-            </button>
-            <button class="btn btn-outline-danger btn-sm rounded-3" title="Supprimer">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </div>
-
+    <ng-template #noCours>
+      <div class="text-center mt-2">
+        <h2>Aucun cours enregistrer pour le moment</h2>
       </div>
-    </div>
-    <div class="card p-3 shadow-sm rounded-4 mb-4">
-      <div class="d-flex justify-content-between align-items-center flex-wrap">
-
-        <!-- Partie gauche : image + texte -->
-        <div class="d-flex align-items-start flex-grow-1 gap-3">
-          <!-- Image -->
-          <img src="assets/img/dummy.png" alt="Cours" class="rounded-3" style="width: 80px; height: 80px; object-fit: cover;">
-
-          <!-- Texte -->
-          <div>
-            <h6 class="fw-bold mb-1">Conception Réactive Du Site Web</h6>
-            <p class="text-muted mb-2 small">
-              Apprenez à concevoir des sites Web avec Figma, à créer avec Web Flow et à créer un
-            </p>
-
-            <!-- Badges -->
-            <div class="d-flex flex-wrap gap-2">
-            <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-clock me-1"></i> 5H 55M
-            </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-film me-1"></i> 22 conférences
-            </span>
-              <span class="badge bg-light-success text-success d-flex align-items-center px-3 py-2 rounded-pill">
-              <i class="bi bi-person me-1"></i> 33 étudiants
-            </span>
-            </div>
-          </div>
-        </div>
-        <div class="text-end">
-          <small class="text-muted">prix</small>
-          <div class="fw-bold fs-6">19,99 XOF</div>
-        </div>
-        <!-- Partie droite : prix + actions -->
-        <div class="d-flex flex-column align-items-end justify-content-between ms-3" style="min-width: 150px;">
-
-          <div class="d-flex gap-2 mt-3">
-            <button class="btn btn-outline-secondary btn-sm rounded-3" title="Modifier">
-              <i class="bi bi-pencil"></i>
-            </button>
-            <button class="btn btn-outline-danger btn-sm rounded-3" title="Supprimer">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </ng-template>
 
   </div>
 

@@ -5,6 +5,7 @@ import {OrgService} from '../../shared/services/job/org.service';
 import {NgForOf, NgIf} from '@angular/common';
 import {JobOffersService} from '../../shared/services/job/job-offers.service';
 import {CandidatureService} from '../../shared/services/job/candidature.service';
+import {CoursService} from '../../shared/services/cours/cours.service';
 
 @Component({
   selector: 'app-dash-princip',
@@ -25,9 +26,11 @@ export class DashPrincipComponent implements OnInit{
   nbreW:any;
   nbreA:any;
   constructor(private authService:AuthService,private orgService:OrgService,
-              private jobService:JobOffersService,private candidatureService:CandidatureService) {
+              private jobService:JobOffersService,private candidatureService:CandidatureService,
+              private courService:CoursService) {
   }
 
+  cours:any;
   ngOnInit() {
 
 
@@ -60,6 +63,12 @@ export class DashPrincipComponent implements OnInit{
                 console.error('Erreur lors de la récupération du nombre :', error);
               }
             );
+
+            this.courService.getCoursByInstructor(this.companyId).subscribe(
+              res=>{
+                this.cours = res;
+              }
+            )
           }
         )
 
@@ -151,6 +160,35 @@ export class DashPrincipComponent implements OnInit{
   //     }
   //   )
   // }
+
+  deleteCour(id:any){
+    if(confirm("Voulez-vous vraiment supprimer ce cour ?")){
+      this.courService.deleteCour(id).subscribe({
+
+        next: () => {
+          console.log("Offre supprimée avec succès");
+          this.orgService.getByEmail(this.authService.getUsernameOr()).subscribe(
+            res=>{
+              this.organisation = res;
+              this.companyId = this.organisation.id;
+              this.courService.getCoursByInstructor(this.companyId).subscribe(
+                res=>{
+                  this.cours = res;
+                  console.log(this.cours);
+                }
+              )
+            }
+          );
+
+        },
+        error: (err) => {
+          console.error("Erreur lors de la suppression", err);
+        }
+      });
+    } else {
+      console.log("Suppression annulée.");
+    }
+  }
 
 
 }

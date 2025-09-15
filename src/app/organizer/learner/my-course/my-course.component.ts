@@ -6,6 +6,8 @@ import {FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Val
 import {CoursService} from '../../../shared/services/cours/cours.service';
 import {NgForOf, NgIf} from '@angular/common';
 
+declare var bootstrap: any;
+
 @Component({
   selector: 'app-my-course',
   imports: [
@@ -39,6 +41,7 @@ export class MyCourseComponent implements OnInit {
       category:['', Validators.required],
       level:['', Validators.required],
       company_id:['', Validators.required],
+      image:['',Validators.required],
     });
 
     this.categoryForm = this.fb.group({
@@ -54,6 +57,7 @@ export class MyCourseComponent implements OnInit {
 
 
   }
+  cours:any;
   ngOnInit() {
 
     this.orgService.getByEmail(this.authService.getUsernameOr()).subscribe(
@@ -62,8 +66,16 @@ export class MyCourseComponent implements OnInit {
         this.companyId=this.organisation.id;
         console.log(this.companyId);
         this.coursesForm.get('company_id')?.setValue(this.companyId);
+        this.courService.getCoursByInstructor(this.companyId).subscribe(
+          res=>{
+            this.cours = res;
+            console.log(this.cours);
+          }
+        )
       }
-    )
+    );
+
+
 
 
     this.courService.getCategory().subscribe(res=>{
@@ -140,14 +152,25 @@ export class MyCourseComponent implements OnInit {
 
   onsubmit(){
     const formData = new FormData();
-    formData.append('title', this.coursesForm.get('title')?.value);
-    formData.append('description', this.coursesForm.get('description')?.value);
-    formData.append('access', this.coursesForm.get('access')?.value);
-    formData.append('langage', this.coursesForm.get('language')?.value);
-    formData.append('level',this.coursesForm.get('level')?.value);
-    formData.append('category',this.coursesForm.get('category')?.value);
-    formData.append('price',this.coursesForm.get('price')?.value);
-    formData.append('instructor',this.coursesForm.get('company_id')?.value);
+    formData.append('coursData',JSON.stringify({
+      title:this.coursesForm.get('title')?.value,
+      description:this.coursesForm.get('description')?.value,
+      price:this.coursesForm.get('price')?.value,
+      langage:this.coursesForm.get('language')?.value,
+      category:this.coursesForm.get('category')?.value,
+      access:this.coursesForm.get('access')?.value,
+      instructor:this.coursesForm.get('company_id')?.value,
+      level:this.coursesForm.get('level')?.value
+    }));
+    // formData.append('title', this.coursesForm.get('title')?.value);
+    // formData.append('description', this.coursesForm.get('description')?.value);
+    // formData.append('access', this.coursesForm.get('access')?.value);
+    // formData.append('langage', this.coursesForm.get('language')?.value);
+    // formData.append('level',this.coursesForm.get('level')?.value);
+    // formData.append('category',this.coursesForm.get('category')?.value);
+    // formData.append('price',this.coursesForm.get('price')?.value);
+    // formData.append('instructor',this.coursesForm.get('company_id')?.value);
+    formData.append('image',this.image);
     this.seeCours = false;
         this.seeSection = true;
 
@@ -176,35 +199,98 @@ export class MyCourseComponent implements OnInit {
   //   );
   // }
 
+  goback(){
+    this.seeCours = true;
+    this.seeSection = false;
+  }
 
+  showSuccess = false;
   onSubmitCoursAvecChapitres() {
-    // Prépare les données du cours depuis le formulaire principal
-    const coursData = {
-      title: this.coursesForm.get('title')?.value,
-      description: this.coursesForm.get('description')?.value,
-      access: this.coursesForm.get('access')?.value,
-      langage: this.coursesForm.get('language')?.value,
-      level: this.coursesForm.get('level')?.value,
-      category: this.coursesForm.get('category')?.value,
-      price: this.coursesForm.get('price')?.value,
-      instructor: this.coursesForm.get('company_id')?.value,
-      // Chapitres : peut contenir plusieurs chapitres
-      chapitres: this.courSection.value ? [this.courSection.value] : []
-    };
-    console.log(coursData);
-    // Appel du service unique
-    this.courService.addCoursAvecChapitres(coursData).subscribe(
+    // const coursData = {
+    //   title: this.coursesForm.get('title')?.value,
+    //   description: this.coursesForm.get('description')?.value,
+    //   access: this.coursesForm.get('access')?.value,
+    //   langage: this.coursesForm.get('language')?.value,
+    //   level: this.coursesForm.get('level')?.value,
+    //   category: this.coursesForm.get('category')?.value,
+    //   price: this.coursesForm.get('price')?.value,
+    //   instructor: this.coursesForm.get('company_id')?.value,
+    //   // ici on envoie directement le tableau des chapitres
+    //   chapitres: this.courSection.value.chapitres
+    // }
+    const formData = new FormData();
+    formData.append('coursData',JSON.stringify({
+      title:this.coursesForm.get('title')?.value,
+      description:this.coursesForm.get('description')?.value,
+      price:this.coursesForm.get('price')?.value,
+      langage:this.coursesForm.get('language')?.value,
+      category:this.coursesForm.get('category')?.value,
+      access:this.coursesForm.get('access')?.value,
+      instructor:this.coursesForm.get('company_id')?.value,
+      level:this.coursesForm.get('level')?.value
+    }));
+
+    // const formData1 = new FormData();
+    // formData1.append("coursData",JSON.stringify(coursData));
+    formData.append("image",this.image);
+
+    console.log("Payload envoyé :", formData.values());
+
+    this.courService.addCoursAvecChapitres(formData).subscribe(
       res => {
         console.log('Cours et chapitres créés avec succès', res);
-        // Masquer le formulaire cours et afficher les sections si besoin
+        // ✅ Fermer le modal Bootstrap
+        const modalEl = document.getElementById('exampleModal');
+        if (modalEl) {
+          const modal = bootstrap.Modal.getInstance(modalEl)
+            || new bootstrap.Modal(modalEl);
+          modal.hide();
+        }
+
+        // ✅ Afficher notification de succès
+        this.showSuccess = true;
+        setTimeout(() => this.showSuccess = false, 3000);
         this.seeCours = false;
         this.seeSection = true;
+        location.reload();
       },
       err => {
         console.error('Erreur lors de la création du cours ou des chapitres', err);
       }
     );
   }
+  image!:File;
+  onFileSelected(event: Event) {
+    const fileInput:any  = event.target as HTMLInputElement;
+    if (fileInput.files.length > 0) {
+      this.image = fileInput.files[0];
+
+    }
+  }
+
+  deleteCour(id:any){
+    if(confirm("Voulez-vous vraiment supprimer ce cour ?")){
+      this.courService.deleteCour(id).subscribe({
+
+        next: () => {
+        console.log("Offre supprimée avec succès");
+          this.courService.getCoursByInstructor(this.coursesForm.get('company_id')?.value).subscribe(
+            res=>{
+              this.cours = res;
+              console.log(this.cours);
+            }
+          )
+      },
+        error: (err) => {
+        console.error("Erreur lors de la suppression", err);
+      }
+    });
+    } else {
+    console.log("Suppression annulée.");
+    }
+  }
+
+
 
 
 

@@ -89,9 +89,20 @@ export class SigninComponent {
             this.successMessage = 'Connexion réussie !';
             this.authService.setUsernameDem(this.signinFrom.get('email')?.value);
             this.routes.navigate(['/jobseeker/dashboard']);
+
           },
           error: () => {
-            this.errorMessage = 'Échec de connexion. Vérifiez vos identifiants.';
+            this.authService.loginStd(formdata).subscribe({
+              next: () => {
+                this.successMessage = 'Connexion réussie !';
+                this.authService.setUsernameStd(this.signinFrom.get('email')?.value);
+                this.routes.navigate(['/student/dash']);
+              },
+              error:()=>{
+                this.errorMessage = 'Échec de connexion. Vérifiez vos identifiants.';
+              }
+            })
+
           }
         });
       }

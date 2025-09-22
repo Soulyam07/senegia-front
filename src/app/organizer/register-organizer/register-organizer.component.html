@@ -4,49 +4,51 @@
       <h3 class="card-title text-center mb-4">Créer un nouveau compte</h3>
       <p class="text-center mb-4">Inscrivez-vous dès maintenant et profitez d'avantages exclusifs. Commencez votre aventure avec nous dès aujourd'hui !</p>
 
-      <form>
+      <form [formGroup]="orgForm" (ngSubmit)="createEntreprise()">
         <div class="row mb-3">
           <div class="col-md-4">
             <label for="userType" class="form-label">Type D'utilisateur</label>
-            <select class="form-select" id="userType">
-              <option selected>Choisir...</option>
-              <option value="1">Utilisateur 1</option>
-              <option value="2">Utilisateur 2</option>
+            <select class="form-select" id="userType" disabled>
+              <option >Demandeur d'emploi</option>
+              <option value="1">Éducateur</option>
+              <option value="2" selected>Entreprise</option>
+              <option value="3" >Demandeur d'emploie</option>
             </select>
           </div>
 
           <div class="col-md-4">
             <label for="entityType" class="form-label">Type D'entité</label>
-            <input type="text" class="form-control" id="entityType" placeholder="Entrez le type d'entité" />
+            <select class="form-select" id="userType" formControlName="userEntity" >
+              <option value="0" selected>Demandeur d'emploi</option>
+              <option value="1">Private</option>
+              <option value="2" >Publique </option>
+              <option value="3" >Gouvernment</option>
+              <option value="4" >Autre</option>
+            </select>
           </div>
           <div class="col-md-4">
             <label for="phoneNumber" class="form-label">Numéro De Portable</label>
-            <input type="tel" class="form-control" id="phoneNumber" placeholder="Entrez le numéro de téléphone portable" />
+            <input type="tel" class="form-control" id="phoneNumber" placeholder="Entrez le numéro de téléphone portable"  formControlName="mobile"/>
           </div>
         </div>
 
         <div class="row mb-3">
-
 
           <div class="col-md-4">
             <label for="companySize" class="form-label">Taille De L'entreprise</label>
-            <input type="text" class="form-control" id="companySize" placeholder="Entrez la taille de l'entreprise" />
+            <input type="text" class="form-control" id="companySize" formControlName="companySize" placeholder="Entrez la taille de l'entreprise" />
           </div>
           <div class="col-md-4">
             <label for="state" class="form-label">État</label>
-            <input type="text" class="form-control" id="state" placeholder="Entrez l'état" />
+            <input type="text" class="form-control" id="state" formControlName="state" placeholder="Entrez l'état" />
           </div>
           <div class="col-md-4">
             <label for="postalCode" class="form-label">Code Postal</label>
-            <input type="text" class="form-control" id="postalCode" placeholder="Entrez le code postal" />
+            <input type="text" class="form-control" id="postalCode" formControlName="zipCode" placeholder="Entrez le code postal" />
           </div>
         </div>
 
-        <div class="row mb-3">
 
-
-
-        </div>
 
 
 
@@ -54,63 +56,73 @@
 
           <div class="col-md-4">
             <label for="companyName" class="form-label">Nom Légal De L'entreprise</label>
-            <input type="text" class="form-control" id="companyName" placeholder="Entrez le nom de l'entreprise" />
+            <input type="text" class="form-control" id="companyName"  formControlName="name" placeholder="Entrez le nom de l'entreprise" />
           </div>
 
           <div class="col-md-4">
             <label for="website" class="form-label">Site Web (Facultatif)</label>
-            <input type="url" class="form-control" id="website" placeholder="Entrez le site Web" />
+            <input type="url" class="form-control" id="website" placeholder="Entrez le site Web" formControlName="website" />
+          </div>
+
+          <div class="col-md-4">
+            <label for="email" class="form-label">Identifiant E-Mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Entrez l'identifiant e-mail" formControlName="email" />
+          </div>
+
+        </div>
+
+
+
+       <div class="row mb-3" >
+         <div class="col-md-4">
+           <label for="city" class="form-label">Ville</label>
+           <input type="text" class="form-control" id="city" formControlName="city" placeholder="Entrez la ville" />
+         </div>
+
+         <div class="col-md-4">
+           <label for="country" class="form-label">Pays</label>
+           <input type="text" class="form-control" id="country" formControlName="country" placeholder="Entrez le pays" />
+         </div>
+
+         <div class="col-md-4">
+           <label for="address" class="form-label">Adresse</label>
+           <input type="text" class="form-control" id="address" formControlName="address" placeholder="Entrez l'adresse" />
+         </div>
+       </div>
+        <div class="row mb-3">
+
+
+          <div class="col-md-4">
+            <label for="password" class="form-label">Mot De Passe</label>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Entrez le mot de passe" />
+          </div>
+          <div class="col-md-4">
+            <label for="orgContact" class="form-label">Nom du personne a contacter</label>
+            <input type="text" class="form-control" id="contactP" formControlName="contactP" placeholder="Entrez le nom du personne a contacter" />
+          </div>
+          <div class="col-md-4">
+            <label for="logoUpload" class="form-label">Télécharger L'image/Le Logo De L'organisation</label>
+            <input type="file" class="form-control" id="logoUpload" formControlName="image" (change)="onFileSelected($event)"/>
           </div>
 
         </div>
 
         <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="email" class="form-label">Identifiant E-Mail</label>
-            <input type="email" class="form-control" id="email" placeholder="Entrez l'identifiant e-mail" />
-          </div>
-
-          <div class="col-md-4">
-            <label for="password" class="form-label">Mot De Passe</label>
-            <input type="password" class="form-control" id="password" placeholder="Entrez le mot de passe" />
-          </div>
-          <div class="col-md-4">
-            <label for="confirmPassword" class="form-label">Confirmez Le Mot De Passe</label>
-            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmez le mot de passe" />
-          </div>
-        </div>
-
-       <div class="row mb-3" >
-         <div class="col-md-4">
-           <label for="city" class="form-label">Ville</label>
-           <input type="text" class="form-control" id="city" placeholder="Entrez la ville" />
-         </div>
-
-         <div class="col-md-4">
-           <label for="country" class="form-label">Pays</label>
-           <input type="text" class="form-control" id="country" placeholder="Entrez le pays" />
-         </div>
-
-         <div class="col-md-4">
-           <label for="address" class="form-label">Adresse</label>
-           <input type="text" class="form-control" id="address" placeholder="Entrez l'adresse" />
-         </div>
-       </div>
-
-
-        <div class="row mb-4">
           <div class="col-md-6">
             <label for="orgDescription" class="form-label">Description De L'organisation</label>
-            <textarea class="form-control" id="orgDescription" rows="3" placeholder="Description des cours"></textarea>
-          </div>
-          <div class="col-md-6">
-            <label for="logoUpload" class="form-label">Télécharger L'image/Le Logo De L'organisation</label>
-            <input type="file" class="form-control" id="logoUpload" />
+            <textarea class="form-control" id="orgDescription" rows="3" placeholder="Description des cours" formControlName="description"></textarea>
           </div>
         </div>
 
+
         <div class="form-check mb-3">
-          <input type="checkbox" class="form-check-input" id="termsAndConditions" />
+          <input
+            type="checkbox"
+            id="termsAndConditions"
+            class="form-check-input"
+            [checked]="orgForm.get('agreed')?.value === 1"
+            (change)="onTermsChange($event)"
+          />
           <label class="form-check-label" for="termsAndConditions">J'accepte les <a href="#" class="text-decoration-none">conditions générales</a> et la <a href="#" class="text-decoration-none">politique de confidentialité</a>.</label>
         </div>
 

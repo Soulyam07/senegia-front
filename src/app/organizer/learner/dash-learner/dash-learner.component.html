@@ -5,9 +5,9 @@
     <div class="d-flex align-items-center gap-3">
       <img src="../../../assets/img/user.jpg" alt="User Photo" class="profile-pic">
       <div>
-        <h4 class="mb-0">Abdou Diambar</h4>
-        <div><i class="bi bi-envelope-fill me-2"></i> abcdf...fsdfsd.com</div>
-        <div><i class="bi bi-telephone-fill me-2"></i> +91 1234567890</div>
+        <h4 class="mb-0">{{ organisation?.name  }}</h4>
+        <div><i class="bi bi-envelope-fill me-2"></i> {{ organisation?.email }}</div>
+        <div><i class="bi bi-telephone-fill me-2"></i>{{ organisation?.mobile_number }} // {{ organisation?.contact_person_name }}</div>
       </div>
     </div>
     <div>
@@ -21,13 +21,13 @@
   <div class="d-flex gap-3 justify-content-start flex-wrap">
     <button class="btn bg-white tab-button  text-dark fw-bold ">
 
-      <h4 style="font-size: 22px">Dashboard</h4>
+      <h4 style="font-size: 22px" routerLink="/organiser/dashboard">Dashboard</h4>
     </button>
     <button class="btn bg-white tab-button active text-success fw-bold">
       <h4 style="font-size: 22px">Courses</h4>
     </button>
     <button class="btn bg-white tab-button text-dark fw-bold">
-      <h4 style="font-size: 22px" >Jobs</h4>
+      <h4 style="font-size: 22px" routerLink="/organiser/dash-job">Jobs</h4>
     </button>
   </div>
 </div>
@@ -76,7 +76,7 @@
       <div class="col-md-4">
         <div class="card shadow-sm h-100 border-1 rounded-4 p-3 d-flex flex-row justify-content-between align-items-center">
           <div>
-            <h2 class="fw-bold text-danger">10</h2>
+            <h2 class="fw-bold text-danger">{{ cours?.length || 0 }}</h2>
             <p class="mb-0">Nombre total de</p>
             <p class="fw-semibold text-danger">Cours</p>
           </div>
@@ -205,105 +205,114 @@
 <div class="mx-auto ms-4 me-4 mt-5">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4 class="fw-bold">Nouveaux cours récemment ajoutés</h4>
-    <button class="btn btn-outline-success">Tout Voir</button>
+    <button class="btn btn-outline-success" routerLink="/organizer/my-course">Tout Voir</button>
   </div>
 
-  <div class="row">
-    <!-- Carte Webinaire 1 -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="assets/img/demo.png" class="card-img-top" alt="Angular">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-calendar3 me-2 text-success"></i> 5h 49min
-            <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences
-            <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants
+  <div *ngIf="cours;else noCours">
+    <div class="row" *ngFor="let cour of cours?.slice(0,3)">
+      <!-- Carte Webinaire 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img [src]="cours.img || 'assets/img/demo.png'"  class="card-img-top" alt="Angular">
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-calendar3 me-2 text-success"></i> {{ cour?.total_duration }}
+              <i class="bi bi-book ms-3 me-2 text-success"></i> {{ cour?.total_chapitres }}
+              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants
 
-          </div>
-          <h6 class="fw-bold">Apprendre les fondamentaux d'Angular</h6>
-          <p class="text-muted small mb-2">
-            Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...
-          </p>
-          <hr>
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <div class="fw-bold text-success">19,99 XOF</div>
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">
-                <i class="bi bi-trash"></i>
-              </button>
-              <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">
-                <i class="bi bi-pencil"></i>
-              </button>
             </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- Carte Webinaire 2 -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="assets/img/demo2.png" class="card-img-top" alt="Sketch">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-calendar3 me-2 text-success"></i>4h 49min
-            <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences
-            <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants
-
-          </div>
-          <h6 class="fw-bold">Croquis de A à Z, 2024</h6>
-          <p class="text-muted small mb-2">
-            Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...
-          </p>
-          <hr>
-
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <div class="fw-bold text-success">GRATUIT</div>
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">
-                <i class="bi bi-trash"></i>
-              </button>
-              <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">
-                <i class="bi bi-pencil"></i>
-              </button>
+            <h6 class="fw-bold">{{ cour?.title}}</h6>
+            <p class="text-muted small mb-2">
+              {{ cour?.description }}
+            </p>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+              <div class="fw-bold text-success">{{ cour?.price }} XOF</div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer" (click)="deleteCour(cour.id)">
+                  <i class="bi bi-trash"></i>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">
+                  <i class="bi bi-pencil"></i>
+                </button>
+              </div>
             </div>
-          </div>
 
-        </div>
-      </div>
-    </div>
-
-    <!-- Carte Webinaire 3 -->
-    <div class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img src="assets/img/demo3.png" class="card-img-top" alt="UX UI">
-        <div class="card-body">
-          <div class="d-flex align-items-center mb-2">
-            <i class="bi bi-calendar3 me-2 text-success"></i>3h 49min
-            <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences
-            <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants
-          </div>
-          <h6 class="fw-bold">Informations sur l'interface utilisateur/UX</h6>
-          <p class="text-muted small mb-2">
-            Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...
-          </p>
-          <hr>
-          <div class="d-flex justify-content-between align-items-center mt-2">
-            <div class="fw-bold text-success">GRATUIT</div>
-            <div class="d-flex gap-2">
-              <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">
-                <i class="bi bi-trash"></i>
-              </button>
-              <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">
-                <i class="bi bi-pencil"></i>
-              </button>
-            </div>
           </div>
         </div>
       </div>
+
+      <!-- Carte Webinaire 2 -->
+<!--      <div class="col-md-4 mb-4">-->
+<!--        <div class="card h-100 shadow-sm">-->
+<!--          <img src="assets/img/demo2.png" class="card-img-top" alt="Sketch">-->
+<!--          <div class="card-body">-->
+<!--            <div class="d-flex align-items-center mb-2">-->
+<!--              <i class="bi bi-calendar3 me-2 text-success"></i>4h 49min-->
+<!--              <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences-->
+<!--              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants-->
+
+<!--            </div>-->
+<!--            <h6 class="fw-bold">Croquis de A à Z, 2024</h6>-->
+<!--            <p class="text-muted small mb-2">-->
+<!--              Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...-->
+<!--            </p>-->
+<!--            <hr>-->
+
+<!--            <div class="d-flex justify-content-between align-items-center mt-2">-->
+<!--              <div class="fw-bold text-success">GRATUIT</div>-->
+<!--              <div class="d-flex gap-2">-->
+<!--                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">-->
+<!--                  <i class="bi bi-trash"></i>-->
+<!--                </button>-->
+<!--                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">-->
+<!--                  <i class="bi bi-pencil"></i>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Carte Webinaire 3 &ndash;&gt;-->
+<!--      <div class="col-md-4 mb-4">-->
+<!--        <div class="card h-100 shadow-sm">-->
+<!--          <img src="assets/img/demo3.png" class="card-img-top" alt="UX UI">-->
+<!--          <div class="card-body">-->
+<!--            <div class="d-flex align-items-center mb-2">-->
+<!--              <i class="bi bi-calendar3 me-2 text-success"></i>3h 49min-->
+<!--              <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences-->
+<!--              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants-->
+<!--            </div>-->
+<!--            <h6 class="fw-bold">Informations sur l'interface utilisateur/UX</h6>-->
+<!--            <p class="text-muted small mb-2">-->
+<!--              Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...-->
+<!--            </p>-->
+<!--            <hr>-->
+<!--            <div class="d-flex justify-content-between align-items-center mt-2">-->
+<!--              <div class="fw-bold text-success">GRATUIT</div>-->
+<!--              <div class="d-flex gap-2">-->
+<!--                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">-->
+<!--                  <i class="bi bi-trash"></i>-->
+<!--                </button>-->
+<!--                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">-->
+<!--                  <i class="bi bi-pencil"></i>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
     </div>
   </div>
+  <ng-template #noCours>
+    <div class="text-center mt-4">
+
+      <h3>Aucun cours n'est disponible</h3>
+    </div>
+  </ng-template>
+
 </div>
 
 

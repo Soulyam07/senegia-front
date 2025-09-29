@@ -1,0 +1,232 @@
+<div class="job-header">
+  <h2>Job Details</h2>
+  <p>Decouvrez de nouvelles opportunités et libérez votre potentiel</p>
+</div>
+
+<div class="container my-5">
+  <div class="row g-4">
+
+    <!-- Left Column -->
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <img src="assets/img/1_Figl5dB0NNgVmuLkLzOdbA.png" style="width: 100%;height: 50%;border-radius: 20px 20px 0 0;">
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center" >
+            <div>
+              <h3>{{ jobDetails?.title }}</h3>
+              <p class="mb-0 text-muted">{{ jobDetails?.legal_name }} • {{ jobDetails?.address }} • {{ jobDetails?.posted_date }}</p>
+            </div>
+            <div>
+              <button *ngIf="!isJobApplied(isJob2)" (click)="postuler(isJob2)" class="btn btn-outline-primary">
+                Postuler
+              </button>
+
+              <div *ngIf="isJobApplied(isJob2)">
+                <span *ngIf="jobStatut === 'en attente'" class="badge text-bg-secondary">En attente</span>
+                <span *ngIf="jobStatut === 'accepté'" class="badge text-bg-success">Accepté</span>
+                <span *ngIf="jobStatut === 'refusé'" class="badge text-bg-danger">Refusé</span>
+              </div>
+<!--              <button-->
+<!--                *ngIf="!appliedJobs.has(jobDetails.job_id)"-->
+<!--                class="btn btn-success btn-sm"-->
+<!--                (click)="postuler(jobDetails.job_id)">-->
+<!--                Postuler-->
+<!--              </button>-->
+
+<!--              <button-->
+<!--                *ngIf="appliedJobs.has(jobDetails.job_id)"-->
+<!--                class="btn btn-outline-danger btn-sm"-->
+<!--                (click)="cancelPostuler(jobDetails.job_id)">-->
+<!--                Ne pas postuler-->
+<!--              </button>-->
+<!--              <span *ngIf="jobDetails.statut === 'en attente'" class="badge text-bg-secondary">En attente</span>-->
+<!--              <span *ngIf="candidat.statut === 'accepté'" class="badge text-bg-success">Accepté</span>-->
+<!--              <span *ngIf="candidat.statut === 'refusé'" class="badge text-bg-danger">Refusé</span>-->
+            </div>
+<!--            <button class="btn btn-success apply-btn">Modifier</button>-->
+          </div>
+
+          <div class="row text-center my-4">
+            <div class="col">
+              <p class="info-label">Experience</p>
+              <p class="info-value">{{ jobDetails?.experience_required }}</p>
+            </div>
+            <div class="col">
+              <p class="info-label">Niveau de travail</p>
+              <p class="info-value">{{ jobDetails?.work_level }}</p>
+            </div>
+            <div class="col">
+              <p class="info-label">Type d'emploi</p>
+              <p class="info-value">{{ jobDetails?.employee_type }}</p>
+            </div>
+            <div class="col">
+              <p class="info-label">Salaire </p>
+              <p class="info-value">{{ jobDetails?.salary_usd_per_month }} FCFA/ Month</p>
+            </div>
+          </div>
+
+          <div>
+            <p class="section-title">A propos de l'emploie </p>
+            <p>{{ jobDetails?.job_description }}</p>
+
+            <p class="section-title">Responsabilité</p>
+            <ul *ngFor="let resp of jobDetails?.responsibilities">
+              <li>{{ resp }}</li>
+
+            </ul>
+
+            <p class="section-title">Qualifications et compétences</p>
+            <ul *ngFor="let skill of jobDetails?.skills">
+              <li>{{ skill }}</li>
+
+            </ul>
+
+            <p class="section-title">A propos de l'Entreprise/organisation</p>
+            <div class="d-flex align-items-start">
+              <img [src]="jobDetails?.logo || '../../../assets/img/user.jpg'" alt="Company Logo" width="40" height="40" class="rounded-circle me-3">
+
+              <div>
+                <strong>{{ jobDetails?.legal_name }}</strong><br>
+                {{ jobDetails?.city }}, {{ jobDetails?.country}}
+                <br>
+                <small class="text-muted">{{ jobDetails?.description }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!--      <div class="job-card">-->
+
+<!--        &lt;!&ndash; Job Title & Action &ndash;&gt;-->
+<!--        <div class="d-flex justify-content-between align-items-start mb-3">-->
+<!--          <div class="d-flex align-items-center">-->
+<!--            <img src="assets/img/1_Figl5dB0NNgVmuLkLzOdbA.png" style="width: 100%;height: 50%;border-radius: 20px 20px 0 0;">-->
+<!--          -->
+<!--            <img src="https://via.placeholder.com/60" alt="Logo" class="rounded me-3">-->
+<!--            <div>-->
+<!--              <h5 class="mb-0">Senior Full Stack Engineer</h5>-->
+<!--              <small class="text-muted">Triazine Software Pvt Ltd • Greater Noida • 1 Day Ago</small>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <button class="btn apply-btn">Apply Now</button>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Job Meta &ndash;&gt;-->
+<!--        <div class="job-meta mb-4">-->
+<!--          <span><strong>Experience:</strong> Minimum 1 Year</span>-->
+<!--          <span><strong>Work Level:</strong> Senior</span>-->
+<!--          <span><strong>Employee Type:</strong> Freelance</span>-->
+<!--          <span><strong>Offer Salary:</strong> $2222 / Month</span>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Job Description &ndash;&gt;-->
+<!--        <div>-->
+<!--          <div class="section-title">About The Job</div>-->
+<!--          <p>A Senior Full Stack Engineer is a seasoned professional responsible for designing, developing, and maintaining complex web applications across the full technology stack.</p>-->
+
+<!--          <div class="section-title">Responsibilities</div>-->
+<!--          <ul>-->
+<!--            <li>Architecting and Developing Solutions</li>-->
+<!--            <li>Code Quality and Best Practices</li>-->
+<!--            <li>Project Leadership and Mentoring</li>-->
+<!--            <li>Technical Problem-Solving</li>-->
+<!--            <li>Collaboration and Communication</li>-->
+<!--            <li>Performance Optimization</li>-->
+<!--            <li>Staying Current</li>-->
+<!--            <li>Security and Compliance</li>-->
+<!--            <li>Documentation</li>-->
+<!--            <li>Strategic Input</li>-->
+<!--          </ul>-->
+
+<!--          <div class="section-title">Qualification & Skill Sets</div>-->
+<!--          <ul>-->
+<!--            <li>HTML/CSS</li>-->
+<!--            <li>JavaScript</li>-->
+<!--            <li>Front-End Frameworks/Libraries</li>-->
+<!--            <li>Responsive Design</li>-->
+<!--            <li>Performance Optimization</li>-->
+<!--            <li>Version Control</li>-->
+<!--          </ul>-->
+
+<!--          <div class="section-title">About The Company</div>-->
+<!--          <p><strong>Triazine Software Pvt Ltd</strong> • Sector 58, Noida</p>-->
+<!--          <p>This is a design and coding resources platform for designers, developers and entrepreneurs. We're building a digital marketplace to simplify the creation of websites, apps and software on any device.</p>-->
+<!--        </div>-->
+
+<!--      </div>-->
+    </div>
+
+    <!-- Right Column -->
+    <div class="col-lg-4">
+      <div class="section-title">Quelques Emplois</div>
+
+      <!-- Similar Job Cards -->
+      <div class="similar-job-card" *ngFor="let job of allJobs?.slice(0,6)">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+
+          <div class="d-flex align-items-start">
+            <img [src]="job.logo || 'assets/img/jobs-overview.png'" alt="Company Logo"
+                 width="40" height="40" class="rounded-circle me-2">
+
+            <div>
+              <h6 class="text-muted mb-0">{{ job.legal_name }}</h6>
+              <span class="text-muted small">{{ job.address }}</span>
+            </div>
+          </div>
+
+
+
+
+          <!-- Right side: employee type badge -->
+          <span class="badge bg-warning text-dark">{{ job.employee_type }}</span>
+
+        </div>
+
+        <h5 class="card-title">{{ job.title }}</h5>
+        <div class="text-end mt-2">
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <!-- Bouton gauche -->
+            <button class="btn btn-outline-success btn-sm" (click)="viewJobDetails(job.job_id)">voir en details</button>
+
+            <!-- Boutons à droite -->
+            <div class="d-flex align-items-center gap-2 ms-auto">
+              <div>
+                <button
+                  *ngIf="!appliedJobs.has(job.job_id)"
+                  class="btn btn-success btn-sm"
+                  (click)="postuler(job.job_id)">
+                  Postuler
+                </button>
+
+                <button
+                  *ngIf="appliedJobs.has(job.job_id)"
+                  class="btn btn-outline-danger btn-sm"
+                  (click)="cancelPostuler(job.job_id)">
+                  Ne pas postuler
+                </button>
+              </div>
+
+
+              <button (click)="toggleSaveJob(job.job_id)" class="btn btn-outline-secondary rounded-3 p-2">
+                <i class="bi" [ngClass]="{
+    'bi-bookmark-fill': isJobSaved(job.job_id),
+    'bi-bookmark': !isJobSaved(job.job_id)
+  }"></i>
+              </button>
+
+
+            </div>
+          </div>
+<!--          <a href="#" class="btn btn-sm btn-outline-primary">View Job</a>-->
+        </div>
+      </div>
+
+
+
+      <!-- Duplicate more job cards as needed -->
+
+    </div>
+  </div>
+</div>

@@ -27,7 +27,7 @@ import {MyResumeComponent} from './organizer/jobseeker/my-resume/my-resume.compo
 import {CoursdetailsComponent} from './student/coursdetails/coursdetails.component';
 
 import { ResumeComponent } from './candidat/resume/resume.component';
-import { ProfilComponent } from './candidat/profil/profil.component';
+//import { ProfilComponent } from './candidat/profil/profil.component';
 import { OffresComponent } from './candidat/offres/offres.component';
 
 export const routes: Routes = [
@@ -56,6 +56,7 @@ export const routes: Routes = [
   { path: 'organizer/my-webinar',component:MyWebinarComponent},
   { path: 'organizer/my-earning',component:MyEarningComponent},
   {path: 'organiser/my-profile',component:ProfilComponent},
+  
   {
     path: 'student',
     loadChildren: () =>

@@ -1,0 +1,324 @@
+
+<div class="header-bg text-white"
+     style="background: url('../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
+  <div class="mx-auto  d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center gap-3">
+      <img src="../../../assets/img/user.jpg" alt="User Photo" class="profile-pic">
+      <div>
+        <h4 class="mb-0">{{ student?.name }}</h4>
+        <div><i class="bi bi-envelope-fill me-2"></i>{{ student?.email }} </div>
+        <div><i class="bi bi-telephone-fill me-2"></i> {{ student?.telephone }}</div>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-light fw-bold text-success">Profile Setting</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tabs (Overview, Courses, Jobs) -->
+
+<div class="mx-auto ms-5 me-3 mt-4 border-bottom">
+  <ul class="nav nav-tabs border-0">
+    <li class="nav-item">
+      <a class="nav-link active fw-bold" style="">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/student/my-course">Mes cours</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/student/saved">Mes cours sauvegardes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/student/purchase">Historique achat</a>
+    </li>
+
+  </ul>
+</div>
+
+<div class="mx-auto ms-3 me-3">
+  <div class="container-fluid">
+    <div class="row mt-5">
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-1 rounded-4 p-3 d-flex flex-row justify-content-between align-items-center">
+          <div>
+            <h2 class="fw-bold text-primary-emphasis">00</h2>
+            <p class="mb-0">Nombre total</p>
+            <p class="fw-semibold text-primary">de cours en cours </p>
+          </div>
+          <img src="../../../assets/img/icons/enroll_student.png" alt="Job Posted" style="width: 60px; height: auto;">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-1 rounded-4 p-3 d-flex flex-row justify-content-between align-items-center">
+          <div>
+            <h2 class="fw-bold text-primary-emphasis">{{ saveCour2?.length }}</h2>
+            <p class="mb-0">Nombre total</p>
+            <p class="fw-semibold text-primary">de cours sauvegardes </p>
+          </div>
+          <img src="../../../assets/img/icons/enroll_student.png" alt="Job Posted" style="width: 60px; height: auto;">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm h-100 border-1 rounded-4 p-3 d-flex flex-row justify-content-between align-items-center">
+          <div>
+            <h2 class="fw-bold text-primary-emphasis">{{ subCours2?.length }}</h2>
+            <p class="mb-0">Nombre total</p>
+            <p class="fw-semibold text-primary">de cours inscrit </p>
+          </div>
+          <img src="../../../assets/img/icons/enroll_student.png" alt="Job Posted" style="width: 60px; height: auto;">
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+<div class="mx-auto ms-4 me-4 mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold">Recent cours Souscrit</h4>
+    <button class="btn btn-outline-success">Tout Voir</button>
+  </div>
+
+  <div *ngIf="subCours2;else noCours">
+    <div class="row" >
+      <!-- Carte Webinaire 1 -->
+      <div class="col-md-3 mb-4" *ngFor="let cour of subCours2?.slice(0,3)">
+        <div class="card h-100 shadow-sm">
+          <img [src]="cour.img || 'assets/img/demo.png'"  class="card-img-top" alt="Angular">
+          <button (click)="toggleSaveCour(cour.course_id)" class="btn btn-light position-absolute top-0 end-0 m-3">
+            <i class="bi" [ngClass]="{
+              'bi-bookmark-fill': isCourSaved(cour.course_id),
+              'bi-bookmark': !isCourSaved(cour.course_id)
+            }"></i>
+          </button>
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-calendar3 me-2 text-success"></i> {{ cour?.total_duration }}
+              <i class="bi bi-book ms-3 me-2 text-success"></i> {{ cour?.total_chapitres }}
+              <i class="bi bi-person ms-3 me-2 text-success"></i> {{ cour?.total_etud }} etudiants
+
+            </div>
+            <h6 class="fw-bold">{{ cour?.title}}</h6>
+            <p class="text-muted small text-truncate mb-2" style="max-width: 400px;">
+              {{ cour?.description }}
+            </p>
+            <hr>
+            <div class="d-flex justify-content-center align-items-center mt-2">
+
+              <div class="d-flex gap-2">
+
+                <button class="btn btn-outline-warning btn-sm" title="Modifier">
+                    Commencer la lecture
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Webinaire 2 -->
+      <!--      <div class="col-md-4 mb-4">-->
+      <!--        <div class="card h-100 shadow-sm">-->
+      <!--          <img src="assets/img/demo2.png" class="card-img-top" alt="Sketch">-->
+      <!--          <div class="card-body">-->
+      <!--            <div class="d-flex align-items-center mb-2">-->
+      <!--              <i class="bi bi-calendar3 me-2 text-success"></i>4h 49min-->
+      <!--              <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences-->
+      <!--              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants-->
+
+      <!--            </div>-->
+      <!--            <h6 class="fw-bold">Croquis de A à Z, 2024</h6>-->
+      <!--            <p class="text-muted small mb-2">-->
+      <!--              Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...-->
+      <!--            </p>-->
+      <!--            <hr>-->
+
+      <!--            <div class="d-flex justify-content-between align-items-center mt-2">-->
+      <!--              <div class="fw-bold text-success">GRATUIT</div>-->
+      <!--              <div class="d-flex gap-2">-->
+      <!--                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">-->
+      <!--                  <i class="bi bi-trash"></i>-->
+      <!--                </button>-->
+      <!--                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">-->
+      <!--                  <i class="bi bi-pencil"></i>-->
+      <!--                </button>-->
+      <!--              </div>-->
+      <!--            </div>-->
+
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+
+      <!--      &lt;!&ndash; Carte Webinaire 3 &ndash;&gt;-->
+      <!--      <div class="col-md-4 mb-4">-->
+      <!--        <div class="card h-100 shadow-sm">-->
+      <!--          <img src="assets/img/demo3.png" class="card-img-top" alt="UX UI">-->
+      <!--          <div class="card-body">-->
+      <!--            <div class="d-flex align-items-center mb-2">-->
+      <!--              <i class="bi bi-calendar3 me-2 text-success"></i>3h 49min-->
+      <!--              <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences-->
+      <!--              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants-->
+      <!--            </div>-->
+      <!--            <h6 class="fw-bold">Informations sur l'interface utilisateur/UX</h6>-->
+      <!--            <p class="text-muted small mb-2">-->
+      <!--              Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...-->
+      <!--            </p>-->
+      <!--            <hr>-->
+      <!--            <div class="d-flex justify-content-between align-items-center mt-2">-->
+      <!--              <div class="fw-bold text-success">GRATUIT</div>-->
+      <!--              <div class="d-flex gap-2">-->
+      <!--                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">-->
+      <!--                  <i class="bi bi-trash"></i>-->
+      <!--                </button>-->
+      <!--                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">-->
+      <!--                  <i class="bi bi-pencil"></i>-->
+      <!--                </button>-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+    </div>
+  </div>
+  <ng-template #noCours>
+    <div class="text-center mt-4">
+
+      <h3>Aucun cours n'est disponible</h3>
+    </div>
+  </ng-template>
+</div>
+
+<div class="mx-auto ms-4 me-4 mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold">Recent cours Sauvegarde</h4>
+    <button class="btn btn-outline-success">Tout Voir</button>
+  </div>
+
+  <div *ngIf="saveCour2;else noCours">
+    <div class="row" >
+      <!-- Carte Webinaire 1 -->
+      <div class="col-md-3 mb-4" *ngFor="let cour of saveCour2?.slice(0,4)">
+        <div class="card h-100 shadow-sm">
+          <img [src]="cour.img || 'assets/img/demo.png'"  class="card-img-top" alt="Angular">
+          <button (click)="toggleSaveCour(cour.id)" class="btn btn-light position-absolute top-0 end-0 m-3">
+            <i class="bi" [ngClass]="{
+              'bi-bookmark-fill': isCourSaved(cour.id),
+              'bi-bookmark': !isCourSaved(cour.id)
+            }"></i>
+          </button>
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <i class="bi bi-calendar3 me-2 text-success"></i> {{ cour?.total_duration }}
+              <i class="bi bi-book ms-3 me-2 text-success"></i> {{ cour?.total_chapitres }}
+              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants
+
+            </div>
+            <h6 class="fw-bold text-truncate">{{ cour?.title}}</h6>
+            <p class="text-muted small text-truncate mb-2" style="max-width: 400px;">
+              {{ cour?.description }}
+            </p>
+            <hr>
+            <div class="d-flex justify-content-center align-items-center mt-2">
+
+              <div class="d-flex gap-2">
+
+                <button
+                  *ngIf="!subJobs.has(cour.course_id)"
+                  class="btn btn-success btn-sm"
+                  (click)="subscribe(cour.course_id)">
+                  Subscrire
+                </button>
+
+                <button
+                  *ngIf="subJobs.has(cour.course_id)"
+                  class="btn btn-outline-danger btn-sm"
+                  (click)="cancelSub(cour.course_id)">
+                  Ne plus Subscrire
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Carte Webinaire 2 -->
+      <!--      <div class="col-md-4 mb-4">-->
+      <!--        <div class="card h-100 shadow-sm">-->
+      <!--          <img src="assets/img/demo2.png" class="card-img-top" alt="Sketch">-->
+      <!--          <div class="card-body">-->
+      <!--            <div class="d-flex align-items-center mb-2">-->
+      <!--              <i class="bi bi-calendar3 me-2 text-success"></i>4h 49min-->
+      <!--              <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences-->
+      <!--              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants-->
+
+      <!--            </div>-->
+      <!--            <h6 class="fw-bold">Croquis de A à Z, 2024</h6>-->
+      <!--            <p class="text-muted small mb-2">-->
+      <!--              Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...-->
+      <!--            </p>-->
+      <!--            <hr>-->
+
+      <!--            <div class="d-flex justify-content-between align-items-center mt-2">-->
+      <!--              <div class="fw-bold text-success">GRATUIT</div>-->
+      <!--              <div class="d-flex gap-2">-->
+      <!--                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">-->
+      <!--                  <i class="bi bi-trash"></i>-->
+      <!--                </button>-->
+      <!--                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">-->
+      <!--                  <i class="bi bi-pencil"></i>-->
+      <!--                </button>-->
+      <!--              </div>-->
+      <!--            </div>-->
+
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+
+      <!--      &lt;!&ndash; Carte Webinaire 3 &ndash;&gt;-->
+      <!--      <div class="col-md-4 mb-4">-->
+      <!--        <div class="card h-100 shadow-sm">-->
+      <!--          <img src="assets/img/demo3.png" class="card-img-top" alt="UX UI">-->
+      <!--          <div class="card-body">-->
+      <!--            <div class="d-flex align-items-center mb-2">-->
+      <!--              <i class="bi bi-calendar3 me-2 text-success"></i>3h 49min-->
+      <!--              <i class="bi bi-book ms-3 me-2 text-success"></i> 24 conferences-->
+      <!--              <i class="bi bi-person ms-3 me-2 text-success"></i> 34 etudiants-->
+      <!--            </div>-->
+      <!--            <h6 class="fw-bold">Informations sur l'interface utilisateur/UX</h6>-->
+      <!--            <p class="text-muted small mb-2">-->
+      <!--              Apprenez à concevoir des sites Web avec Figma, à créer avec Webflow et à créer un...-->
+      <!--            </p>-->
+      <!--            <hr>-->
+      <!--            <div class="d-flex justify-content-between align-items-center mt-2">-->
+      <!--              <div class="fw-bold text-success">GRATUIT</div>-->
+      <!--              <div class="d-flex gap-2">-->
+      <!--                <button class="btn btn-outline-danger btn-sm rounded-circle" title="Supprimer">-->
+      <!--                  <i class="bi bi-trash"></i>-->
+      <!--                </button>-->
+      <!--                <button class="btn btn-outline-secondary btn-sm rounded-circle" title="Modifier">-->
+      <!--                  <i class="bi bi-pencil"></i>-->
+      <!--                </button>-->
+      <!--              </div>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+    </div>
+  </div>
+  <ng-template #noCours>
+    <div class="text-center mt-4">
+
+      <h3>Aucun cours n'est disponible</h3>
+    </div>
+  </ng-template>
+</div>
+

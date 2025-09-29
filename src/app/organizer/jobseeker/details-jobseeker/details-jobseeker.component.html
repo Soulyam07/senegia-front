@@ -1,0 +1,153 @@
+<script src="../../../app.routes.ts"></script>
+<div class="mx-auto">
+
+  <div class="mt-5 mb-5 text-center"  *ngIf="jobSeeker">
+    <h3> Bonjour , <strong class="text-warning">{{ jobSeeker?.name }}</strong></h3>
+    <p>Obtenez des recommandations personnalisées en fonction de votre profil</p>
+  </div>
+  <div class="card ms-4 me-4">
+    <form [formGroup]="jobSeekerForm" (ngSubmit)="addDetails()">
+        <div class="card-body">
+          <div class="row mt-2 mb-3 ms-3 ">
+            <h5>Éducation / Formation</h5>
+            <div formArrayName="educations">
+
+              <div *ngFor="let edu of educations.controls; let i = index" [formGroupName]="i" class="row align-items-center g-2 mb-2">
+
+                <div class="col-md-3">
+                  <label for="qualification" class="form-label">Qualification</label>
+                  <input class="form-control" formControlName="qualification" placeholder="Qualification">
+                </div>
+
+                <div class="col-md-3">
+                  <label for="unniversite" class="form-label">Universite</label>
+                  <input class="form-control" formControlName="university" placeholder="Université">
+                </div>
+
+                <div class="col-md-3">
+                  <label for="domaine" class="form-label">Domaine</label>
+                  <input class="form-control" formControlName="field" placeholder="Domaine">
+                </div>
+                <div class="col-md">
+                  <label for="annee" class="form-label">Annee</label>
+                  <input type="number" class="form-control" formControlName="year" placeholder="Annee">
+                </div>
+
+                <div class="col-md d-flex justify-content-start mt-2">
+                  <button type="button" class="btn btn-outline-danger btn-sm rounded-circle" (click)="removeEducation(i)" title="Supprimer">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Bouton Ajouter -->
+              <div class="row mt-2">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-sm btn-primary" (click)="addEducation()">+ Ajouter Formation</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-start">
+            <h3 class="ms-3 me-5">Avez vous une experience professionnelle</h3>
+            <div class="d-flex gap-4 align-items-center">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="yesno" id="yesOption" checked (click)="sayYes()">
+                <label class="form-check-label" for="yesOption" >
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="yesno" id="noOption" (click)="sayNo()">
+                <label class="form-check-label" for="noOption">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-2 mb-3 ms-3 " *ngIf="expEtat">
+            <h5>Experience Professionel</h5>
+            <div formArrayName="experience">
+
+              <div *ngFor="let edu of experience.controls; let i = index" [formGroupName]="i" class="row align-items-center g-2 mb-2">
+
+                <div class="col-md-3">
+                  <label for="qualification" class="form-label">Occupation/Poste</label>
+                  <input class="form-control" formControlName="occupation" placeholder="Poste occupant">
+                </div>
+
+                <div class="col-md-3">
+                  <label for="unniversite" class="form-label">Niveau d'experience</label>
+                  <input class="form-control" formControlName="experience_level" placeholder="Niveau d'experience">
+                </div>
+
+                <div class="col-md-3">
+                  <label for="domaine" class="form-label">Structure ou Entreprise</label>
+                  <input class="form-control" formControlName="employer" placeholder="Structure ou Entreprise">
+                </div>
+                <div class="col-md">
+                  <label for="annee" class="form-label">Annee</label>
+                  <input type="number" class="form-control" formControlName="year" placeholder="Annee">
+                </div>
+
+                <div class="col-md d-flex justify-content-start mt-2">
+                  <button type="button" class="btn btn-outline-danger btn-sm rounded-circle" (click)="removeExperience(i)" title="Supprimer">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Bouton Ajouter -->
+              <div class="row mt-2">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-sm btn-primary" (click)="addExperience()">+ Ajouter Experience</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+            <h5 class="fw-bold text-warning mb-4 ms-4">Upload Your Resume</h5>
+            <div class="row ms-3 me-5">
+
+              <!-- Zone de drag & drop ou Browse -->
+              <div class="col-md-6">
+                <label for="resumeInput" class="upload-box w-100 rounded text-center p-4">
+                  <div class="mb-3">
+                    <i class="fas fa-cloud-upload-alt fa-3x text-success"></i>
+                  </div>
+                  <strong>Drag & drop files</strong> or
+                  <span class="text-success text-decoration-underline">Browse</span>
+                  <p class="text-muted small mt-2">Supported formats: .pdf, .docx File Only</p>
+                </label>
+                <input type="file"
+                       id="resumeInput"
+                       class="d-none"
+                       (change)="onFileSelected($event)"
+                       accept=".pdf,.docx">
+              </div>
+
+              <!-- Fichier téléversé -->
+              <div class="col-md-6">
+                <h6 class="fw-bold mb-2">Uploaded</h6>
+                <div *ngIf="selectedFile" class="form-control d-flex justify-content-between align-items-center" >
+                  {{ selectedFile.name }}
+                  <i class="fas fa-trash text-danger cursor-pointer " (click)="removeFile()">x</i>
+                </div>
+                <div *ngIf="!selectedFile" class="text-muted small">No file selected</div>
+              </div>
+
+            </div>
+
+        <div class="d-flex justify-content-end mt-5 me-5">
+          <button class="btn btn-outline-primary me-3">Annuler</button>
+          <button class=" btn btn-outline-success">Enregistrer</button>
+        </div>
+        </div>
+
+    </form>
+  </div>
+
+</div>

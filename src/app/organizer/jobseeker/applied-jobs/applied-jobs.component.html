@@ -1,0 +1,111 @@
+
+<div class="header-bg text-white"
+     style="background: url('../../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
+  <div class="mx-auto ms-5 d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center gap-3" *ngIf="jobSeeker">
+      <img  [src]="jobSeeker.image " alt="User Photo" class="profile-pic">
+      <div >
+        <h4 class="mb-0">{{ jobSeeker.name }}</h4>
+        <div><i class="bi bi-envelope-fill me-2"></i> {{ jobSeeker.email }}</div>
+        <div><i class="bi bi-telephone-fill me-2"></i> {{ jobSeeker.telephone }} </div>
+      </div>
+    </div>
+    <div>
+<!--      <button class="btn btn-light fw-bold text-success">Profile Setting</button>-->
+    </div>
+  </div>
+</div>
+
+
+
+<div class="mx-auto ms-5 mt-4 border-bottom">
+  <ul class="nav nav-tabs border-0">
+    <li class="nav-item">
+      <a class="nav-link text-dark" style="" routerLink="/jobseeker/dashboard">Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active fw-bold " disabled="" >Offres postulees</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/jobseeker/saveJobs">Offres enregistrees</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/jobseeker/my-resume">Mon resume</a>
+    </li>
+  </ul>
+</div>
+
+
+
+<div class="mx-auto ms-5 me-4 py-4 mt-4 mb-2">
+  <h4 class="fw-semibold mb-3">Emplois Récemment postules
+<!--    <button class="btn btn-outline-success btn-sm float-end">Voir Tout</button>-->
+  </h4>
+
+  <div class="row g-3">
+    <div class="col-md-4" *ngFor="let job of appliedJobs2">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <!-- Left side: logo + legal name -->
+            <div class="d-flex align-items-center">
+              <img [src]="job.logo || 'assets/img/jobs-overview.png'" alt="Company Logo"
+                   width="40" height="40" class="rounded-circle me-2">
+              <h6 class="text-muted mb-0">{{ job.legal_name }}</h6>
+            </div>
+
+            <!-- Right side: employee type badge -->
+            <span class="badge bg-warning text-dark">{{ job.employee_type }}</span>
+          </div>
+
+          <h5 class="card-title">{{ job.title }}</h5>
+          <div class="mb-2">
+            <span class="badge bg-secondary me-1" *ngFor="let tech of job.skills">{{ tech }}</span>
+          </div>
+          <p class="text-muted small mb-2">
+            <!--                <i class="bi bi-clock me-1"></i>{{ job.time }} |-->
+            <i class="bi bi-geo-alt me-1"></i>{{ job.address }}
+          </p>
+          <hr>
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <!-- Bouton gauche -->
+            <button class="btn btn-outline-primary btn-sm">voir statut</button>
+
+            <!-- Boutons à droite -->
+            <div class="d-flex align-items-center gap-2 ms-auto">
+              <button class="btn btn-outline-success btn-sm" (click)="viewJobDetails(job.job_id)">voir en details</button>
+<!--              <div>-->
+<!--                <button-->
+<!--                  *ngIf="!appliedJobs.has(job.job_id)"-->
+<!--                  class="btn btn-success btn-sm"-->
+<!--                  (click)="postuler(job.job_id)">-->
+<!--                  Postuler-->
+<!--                </button>-->
+
+<!--                <button-->
+<!--                  *ngIf="appliedJobs.has(job.job_id)"-->
+<!--                  class="btn btn-outline-danger btn-sm"-->
+<!--                  (click)="cancelPostuler(job.job_id)">-->
+<!--                  Ne pas postuler-->
+<!--                </button>-->
+<!--              </div>-->
+
+
+              <button (click)="toggleSaveJob(job.job_id)" class="btn btn-outline-secondary rounded-3 p-2">
+                <i class="bi" [ngClass]="{
+    'bi-bookmark-fill': isJobSaved(job.job_id),
+    'bi-bookmark': !isJobSaved(job.job_id)
+  }"></i>
+              </button>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

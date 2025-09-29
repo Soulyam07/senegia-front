@@ -21,7 +21,6 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent  {
   title = 'senegia-front';
-
-
+showMainLayout: any;
 
 }

@@ -1,0 +1,94 @@
+
+<!--<app-menustudent-->
+<!--  [userName]="'Mamadou Barro'"-->
+<!--  [userEmail]="'barro@example.com'"-->
+<!--  [userPhone]="'77 123 45 67'"-->
+<!--  [userPhoto]="'assets/img/photo.jpg'">-->
+<!--</app-menustudent>-->
+
+<div class="header-bg text-white"
+     style="background: url('../../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
+  <div class="mx-auto ms-5 d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center gap-3" *ngIf="jobSeeker">
+      <img  [src]="jobSeeker.image || 'assets/img/user.jpg'" alt="User Photo" class="profile-pic">
+      <div >
+        <h4 class="mb-0">{{ jobSeeker.name }}</h4>
+        <div><i class="bi bi-envelope-fill me-2"></i> {{ jobSeeker.email }}</div>
+        <div><i class="bi bi-telephone-fill me-2"></i> {{ jobSeeker.telephone }} </div>
+      </div>
+    </div>
+    <div>
+<!--      <button class="btn btn-light fw-bold text-success">Profile Setting</button>-->
+    </div>
+  </div>
+</div>
+
+
+
+<div class="mx-auto ms-5 mt-4 border-bottom">
+  <ul class="nav nav-tabs border-0">
+    <li class="nav-item">
+      <a class="nav-link text-dark" style="" routerLink="/jobseeker/dashboard" >Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/jobseeker/jobsApp">Offres postulees</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark" routerLink="/jobseeker/saveJobs">Offres enregistrees</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active fw-bold"  disabled>Mon resume</a>
+    </li>
+  </ul>
+</div>
+
+<div class="mx-auto ms-5 me-5 mt-4">
+  <div class="card">
+    <div class="card-body">
+      <div class=" py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">liste des Offres Postulé</h5>
+          <div>
+            <label for="sortSelect" class="form-label me-2 text-muted small">Sort By</label>
+            <select class="form-select form-select-sm w-auto d-inline-block" id="sortSelect">
+              <option selected>Entreprise</option>
+              <option value="date">Date</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead>
+            <tr>
+              <th>No.</th>
+              <th>Type d'emploi</th>
+              <th>Entreprise</th>
+              <th>Offre</th>
+              <th>Date & Time</th>
+              <th>Status </th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Repeat this block as needed -->
+            <tr *ngFor="let job of appliedJobs2;">
+              <td>1</td>
+              <td>{{ job?.employee_type }}</td>
+              <td>{{ job?.legal_name }}</td>
+              <td>{{ job?.title }}</td>
+              <td>{{ job?.date_candidature | date:'dd/MM/yyyy à HH:mm' }}</td>
+              <td>
+                <span *ngIf="job?.statut === 'en attente'" class="badge text-bg-secondary">En attente</span>
+                <span *ngIf="job?.statut === 'accepté'" class="badge text-bg-success">Accepté</span>
+                <span *ngIf="job?.statut === 'refusé'" class="badge text-bg-danger">Refusé</span>
+             </td>
+
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

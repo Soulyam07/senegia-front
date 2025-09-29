@@ -1,0 +1,270 @@
+
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+<div class="header-bg hauteur text-white"
+     style="background: url('../../../assets/img/dashboard.13654da07e827cd2.png') no-repeat center center / cover;">
+  <div class="mx-auto ms-5 d-flex justify-content-between align-items-center flex-wrap">
+    <div class="d-flex align-items-center gap-3">
+    </div>
+<!--    <div class="bio-graph-heading">-->
+<!--      Aliquam ac magna metus. Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.-->
+<!--      Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.-->
+<!--      Nam sed arcu non tellus fringilla fringilla ut vel ispum. Aliquam ac magna metus.-->
+<!--    </div>-->
+    <div>
+<!--      <button class=" buton mt-5 fw-bold text-success me-3">Modifier</button>-->
+    </div>
+  </div>
+</div>
+
+<div class="container bootstrap snippets bootdey">
+
+
+
+  <div class="row">
+    <div class="profile-nav col-md-3 mb-2">
+      <div class="panel">
+        <div class="user-heading round" *ngIf="cand">
+          <a href="#">
+            <img src="assets/img/user.jpg" alt="">
+          </a>
+          <h1>{{ candidat?.name }}</h1>
+          <p>{{ candidat?.email }}</p>
+
+<!--          <button class="btn btn-sm btn-download"  [href]="candidat?.cv_candidat">Download CV-->
+<!--            <i class="bi bi-download"></i>-->
+<!--          </button>-->
+          <a [href]="candidat?.cv_candidat"  class="btn btn-sm btn-download no-border">
+            Download CV
+            <i class="bi bi-download"></i>
+          </a>
+        </div>
+        <div class="user-heading round" *ngIf="org">
+          <a href="#">
+            <img src="assets/img/user.jpg" alt="">
+          </a>
+          <h1>{{ organisation?.legal_name }}</h1>
+          <p>{{ organisation?.entity_type }}</p>
+
+          <!--          <button class="btn btn-sm btn-download"  [href]="candidat?.cv_candidat">Download CV-->
+          <!--            <i class="bi bi-download"></i>-->
+          <!--          </button>-->
+
+        </div>
+
+
+      </div>
+    </div>
+    <div class="profile-info col-md-9">
+
+      <div class="panel">
+        <div class="panel-body bio-graph-info">
+          <h1>Bio Graph</h1>
+          <div class="row" *ngIf="cand">
+            <div class="bio-row">
+              <p><span>Nom Complet </span>: {{ candidat?.name }}</p>
+            </div>
+            <div class="bio-row">
+              <p><span>Email </span>: {{ candidat?.email }}</p>
+            </div>
+            <div class="bio-row">
+              <p><span>Adresse </span>: {{ candidat?.adresse }}</p>
+            </div>
+            <div class="bio-row">
+              <p><span class="me-5">Date de naissance</span>:{{ candidat?.date_naissance }}</p>
+            </div>
+            <div class="bio-row">
+              <p><span>Occupation </span>: UI Designer</p>
+            </div>
+            <div class="bio-row">
+              <p><span>Mobile </span>: {{ candidat?.telephone}}</p>
+            </div>
+
+          </div>
+          <div class="row" *ngIf="org">
+
+            <div class="bio-row">
+              <div><span class>Nom Entreprise</span> {{ organisation?.legal_name }}</div>
+            </div>
+            <div class="bio-row">
+              <div><span>Personne à contacter</span>{{ organisation?.contact_person_name }}</div>
+            </div>
+            <div class="bio-row">
+              <p><span>Email</span> {{ organisation?.email }}</p>
+            </div>
+            <div class="bio-row">
+              <p><span>Adresse</span> {{ organisation?.address }}</p>
+            </div>
+            <div class="bio-row">
+              <div><span>Type d'entreprise</span> {{ organisation?.company_size }}</div>
+            </div>
+            <div class="bio-row">
+              <p><span>Mobile</span> {{ organisation?.mobile_number }}</p>
+            </div>
+
+
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="cand">
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">{{ totalE ? totalE : 0 }}</h3>
+                  <span>Emplois en attente</span>
+                </div>
+                <div class="align-self-center">
+
+                  <i class="bi bi-clock text-primary font-large-2 float-right"></i>
+
+                </div>
+              </div>
+<!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+<!--                <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="text-success">{{ totalA ? totalA : 0 }}</h3>
+                  <span>Emplois accepte</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="bi bi-check-circle text-success font-large-2 float-righ"></i>
+
+                </div>
+              </div>
+<!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+<!--                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="danger">{{ totalR ? totalR : 0 }}</h3>
+                  <span>Emplois refuses</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="bi bi-x danger font-large-2 float-right"></i>
+                </div>
+              </div>
+<!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+<!--                <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">{{ totalP ? totalP : 0 }}</h3>
+                  <span>Total postules</span>
+                </div>
+                <div class="align-self-center">
+                  <i class="bi bi-bar-chart text-primary font-large-2 float-right"></i>
+                </div>
+              </div>
+<!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+<!--                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>-->
+<!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center" *ngIf="org">
+
+      <div class="col-xl col-sm col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="text-success">{{ nbreJobs ? nbreJobs : 0 }}</h3>
+                  <span>Emplois Cree</span>
+                </div>
+                <div class="align-self-center">
+<!--                  <i class="bi bi-check-circle text-success font-large-2 float-righ"></i>-->
+                  <img src="../../../../assets/img/icons/job_posted.png" alt="Job Posted" style="width: 60px; height: auto;">
+
+                </div>
+              </div>
+              <!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+              <!--                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>-->
+              <!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl col-sm col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="danger">{{ nbreW.tW ? nbreW.tW : 0 }}</h3>
+                  <span>Emplois refuses</span>
+                </div>
+                <div class="align-self-center">
+                  <img src="../../../../assets/img/icons/application.png" alt="Applications" style="width: 60px; height: auto;">
+                </div>
+              </div>
+              <!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+              <!--                <div class="progress-bar bg-success" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>-->
+              <!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl col-sm col-12">
+        <div class="card">
+          <div class="card-content">
+            <div class="card-body">
+              <div class="media d-flex">
+                <div class="media-body text-left">
+                  <h3 class="primary">{{ nbreA?.tA ?? 0 }}</h3>
+                  <span>Total postules</span>
+                </div>
+                <div class="align-self-center">
+                  <img src="../../../../assets/img/icons/short_list.png" alt="Shortlisted" style="width: 50px; height: auto;">
+                </div>
+              </div>
+              <!--              <div class="progress mt-1 mb-0" style="height: 7px;">-->
+              <!--                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>-->
+              <!--              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
